@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1717299469 source:f:\codeblocks\final-project-cs-2024\final project codeblocks 2024\main.cpp
+	<curses.h>
+	<string>
+
+1717023653 f:\jake's things\pdcurses-3.8\pdcurses-3.8\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+	<stdbool.h>
+
