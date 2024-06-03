@@ -10,3 +10,26 @@
 	<wchar.h>
 	<stdbool.h>
 
+1717424452 source:d:\jacob hubbard 2024\codeblocks projects\final-project-cs-2024\final project codeblocks 2024\main.cpp
+	<curses.h>
+	<string>
+
+1717423469 d:\pdcurses-3.8\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+	<stdbool.h>
+
+1717425289 d:\pdc34dllw\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+
+1717425289 d:\pdcurses\include\curses.h
+	<stdarg.h>
+	<stddef.h>
+	<stdio.h>
+	<wchar.h>
+

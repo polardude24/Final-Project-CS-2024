@@ -13,10 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="F:/Jake&apos;s things/PDCurses-3.8/PDCurses-3.8" />
+					<Add directory="D:/PDCurses-3.8" />
 				</Compiler>
 				<Linker>
-					<Add library="F:/Jake&apos;s things/PDCurses-3.8/PDCurses-3.8/wincon/pdcurses.a" />
+					<Add library="D:/PDCurses-3.8/wincon/pdcurses.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -37,6 +37,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
-		<Extensions />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
