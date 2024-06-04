@@ -12,26 +12,19 @@ int main(int argc, char** argv)
     cbreak();
     noecho();
 
-    int y, x, yBeg, xBeg, yMax, xMax;
-
-    getyx(stdscr, y, x);
-    getbegyx(stdscr, yBeg, xBeg);
+    /// get screen size
+    int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
 
-    printw("%d %d %d %d %d %d", y, x, yBeg, xBeg, yMax, xMax);
+    /// create a window for our input
+    WINDOW * menuWin = newwin(3, xMax-12, yMax-5, 5);
+    box(menuWin, 0,0);
+    refresh();
+    wrefresh(menuWin);
 
-
+    keypad(menuWin, true);
     getch();
-
-    getyx(stdscr, y, x);
-    getbegyx(stdscr, yBeg, xBeg);
-    getmaxyx(stdscr, yMax, xMax);
-
-    printw("%d %d %d %d %d %d", y, x, yBeg, xBeg, yMax, xMax);
-
-    getch();
-
-    endwin(); // End curses
+    endwin(); /// End curses
 
     return 0;
 }
@@ -41,6 +34,7 @@ This is where all of the functions and their inputs will reside for curses to re
 
 NOTE: curses always has y before x
 
+move(y,x); // moves the cursor to (x,y)
 newwin(height, width, start_y, start_x); // creates a new window
 box(win, left&right, top&bottom); // makes a simple box around a window
 wborder(win, left, right, top, bottom, tlc, trc, blc, brc); // makes a more complex border around  a window
@@ -50,6 +44,8 @@ init_pair(valueOfColourPair, foreground, background); // initializes a colour pa
 getyx(win, y, x); // changes y and x to the current position of the cursor in the window specified
 getbegyx(win, y, x); // changes y and x to the beginning corner of the window specified
 getmaxyx(win, y, x); // changes y and x to the height and width of the window specified
+wgetchar(win); // returns a character
+keypad(win, bool); // sets whether a window can accept arrow keys or keypad keys as input
 
 
 
