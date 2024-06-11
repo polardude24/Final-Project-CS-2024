@@ -8,6 +8,7 @@ class Tile : public Utility
 {
     public:
         Tile();
+        Tile(WINDOW * _curWin, int posY, int posX, char _type, bool isTraversable);
         virtual ~Tile();
 
         int getPosX() { return posX; }
@@ -21,7 +22,10 @@ class Tile : public Utility
         bool getIsCrumb() { return isCrumb; }
         void setIsCrumb(bool val) { isCrumb = val; }
 
+        void display();
+
     protected:
+        WINDOW * curWin;
         int posX;
         int posY;
         char type;

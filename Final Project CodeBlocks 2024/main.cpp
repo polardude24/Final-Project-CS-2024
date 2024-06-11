@@ -3,9 +3,12 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "menu.h"
+#include "Menu.h"
 #include "MenuBar.h"
-
+#include "Maze.h"
+#include "Tile.h"
+#include "Utility.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -18,34 +21,19 @@ int main(int argc, char** argv)
     cbreak();
     noecho();
     curs_set(0);
-
-    int yMax, xMax;
-    getmaxyx(stdscr, yMax, xMax);
-
-    WINDOW * win = newwin(yMax/2, xMax/2, yMax/4, xMax/4);
-    box(win,0,0);
-
-    Menu menus[3] = {
-        Menu("File", 'f'),
-        Menu("Edit", 'e'),
-        Menu("Options", 'o'),
-    };
-
-    MenuBar menuBar(win, menus, 3);
-    menuBar.display();
-
-    char ch;
-    while(ch = wgetch(win))
+    if(!has_colors()) // Check to see if console supports colours, if not do not proceed with program
     {
-        menuBar.handleTrigger(ch);
-        menuBar.display();
+        return -1;
     }
+    start_color(); // Sets up curses to work with colour
+    init_pair(1, COLOR_WHITE, COLOR_BLUE); // White text on blue background (highlighted)
 
+    Game game;
+    game.initializeGame();
+    //game.runGame();
 
-    wgetch(win);
-
-    endwin(); /// End curses
-
+    getch();
+    endwin();
     return 0;
 }
 
@@ -69,6 +57,11 @@ getmaxyx(win, y, x); // changes y and x to the height and width of the window sp
 wgetchar(win); // returns a character
 keypad(win, bool); // sets whether a window can accept arrow keys or keypad keys as input
 mvwaddchar(win, y, x, char); // prints a character at (x,y)
+werase(win); // sets the window back to blank
+chgat(numCharctersToChange, attributeToSet, colourPair, NULL); // changes the attribute of text for a set number of characters to a new attribute and colour pair
+refresh(); // refreshes the whole screen, moving its contents from memory to visual
+wrefresh(win); // refreshes a window, moving its contents from memory to visual
+
 
 INPUT MODES:
 halfdelay(int); // waits for 'int' tenths of a second for input, and if none supplied will return ERR or -1
@@ -89,7 +82,7 @@ A_BLINK
 A_ALTCHARSET
 
 COLOR_PAIR(valueOfColourPair);
-COLOR_BLACK 0
+COLOR_BLACK
 COLOR_RED
 COLOR_GREEN
 COLOR_YELLOW
@@ -101,5 +94,28 @@ COLOR_WHITE
 DETECTING CTRL + CHAR:
 #define ctrl(x) (x && 0x1F) // defining the ctrl(char) function
 if(char == ctrl(char)) will return true if 'char' is ctrl+char
+
+
+REFERENCE FOR MENUBAR FUNCTIONALITY. CREDIT GOES TO CASUAL CODER YOUTUBE CHANNEL
+
+string menu1[] = {"New", "Open", "Save", "Exit"};
+string menu2[] = {"Copy", "Cut", "Paste"};
+string menu3[] = {"Sidebar", "Terminal"};
+
+Menu menus[3] = {
+    Menu("File", 'f', menu1, 4),
+    Menu("Edit", 'e', menu2, 3),
+    Menu("Options", 'o', menu3, 2),
+};
+
+MenuBar menuBar(win, menus, 3);
+menuBar.display();
+
+char ch;
+while(ch = wgetch(win))
+{
+    menuBar.handleTrigger(ch);
+    menuBar.display();
+}
 
 */

@@ -7,11 +7,12 @@
 class Maze : public Utility
 {
     public:
-        Maze();
+        Maze(WINDOW* _curWin, int _mazeHeight, int mazeWidth, int _endPosX, int _endPosY);
         virtual ~Maze();
-
-        int getFogDistance() { return fogDistance; }
-        void setFogDistance(int val) { fogDistance = val; }
+        static const char mazeTemplate1[20][20];
+        // getters and setters
+        //int getFogDistance() { return fogDistance; }
+        //void setFogDistance(int val) { fogDistance = val; }
         int getMazeHeight() { return mazeHeight; }
         void setMazeHeight(int val) { mazeHeight = val; }
         int getMazeWidth() { return mazeWidth; }
@@ -21,17 +22,20 @@ class Maze : public Utility
         int getEndPosY() { return endPosY; }
         void setEndPosY(int val) { endPosY = val; }
 
-        int fogDistance;
-        Tile* maze1[20][20];
-        Tile* maze2[20][20];
-        int endPosX;
-        int endPosY;
+        void display();
+        Maze * generateMaze();
 
     protected:
 
     private:
+        WINDOW * curWin;
+        //int fogDistance;
         int mazeHeight;
         int mazeWidth;
+        //const char mazeTemplate1[10][10];
+        Tile* hardMaze1[20][20];
+        int endPosX;
+        int endPosY;
 };
 
 #endif // MAZE_H

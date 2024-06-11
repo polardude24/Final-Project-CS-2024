@@ -11,6 +11,7 @@ class LinkedList
     protected:
 
     private:
+
 };
 
 #endif // LINKEDLIST_H
