@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Final Project CodeBlocks 2024" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Final Project CodeBlocks 2024" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="F:/Jake&apos;s things/PDCurses-3.8/PDCurses-3.8" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add library="F:/Jake&apos;s things/PDCurses-3.8/PDCurses-3.8/wincon/pdcurses.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Final Project CodeBlocks 2024" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/AcidPotion.h" />
+		<Unit filename="include/Club.h" />
+		<Unit filename="include/ContainerQ.h" />
+		<Unit filename="include/ContainerStack.h" />
+		<Unit filename="include/Entity.h" />
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/GarlicClove.h" />
+		<Unit filename="include/HealthPotion.h" />
+		<Unit filename="include/Item.h" />
+		<Unit filename="include/Key.h" />
+		<Unit filename="include/LinkedList.h" />
+		<Unit filename="include/MagicStaff.h" />
+		<Unit filename="include/Maze.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/MenuBar.h" />
+		<Unit filename="include/MetalClub.h" />
+		<Unit filename="include/Monster.h" />
+		<Unit filename="include/Node.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/Queue.h" />
+		<Unit filename="include/Scythe.h" />
+		<Unit filename="include/Stack.h" />
+		<Unit filename="include/StrangeMeat.h" />
+		<Unit filename="include/Sword.h" />
+		<Unit filename="include/Tile.h" />
+		<Unit filename="include/Utility.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/AcidPotion.cpp" />
+		<Unit filename="src/Club.cpp" />
+		<Unit filename="src/ContainerQ.cpp" />
+		<Unit filename="src/ContainerStack.cpp" />
+		<Unit filename="src/Entity.cpp" />
+		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/GarlicClove.cpp" />
+		<Unit filename="src/HealthPotion.cpp" />
+		<Unit filename="src/Item.cpp" />
+		<Unit filename="src/Key.cpp" />
+		<Unit filename="src/LinkedList.cpp" />
+		<Unit filename="src/MagicStaff.cpp" />
+		<Unit filename="src/Maze.cpp" />
+		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/MenuBar.cpp" />
+		<Unit filename="src/MetalClub.cpp" />
+		<Unit filename="src/Monster.cpp" />
+		<Unit filename="src/Node.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/Queue.cpp" />
+		<Unit filename="src/Scythe.cpp" />
+		<Unit filename="src/Stack.cpp" />
+		<Unit filename="src/StrangeMeat.cpp" />
+		<Unit filename="src/Sword.cpp" />
+		<Unit filename="src/Tile.cpp" />
+		<Unit filename="src/Utility.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
