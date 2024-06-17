@@ -663,7 +663,7 @@ void Game::handleInventory()
             break;
         case 10:
             selectedItem->use();
-            player->setEquippedItem(selectedItem);
+            //player->setEquippedItem(selectedItem);
             selectedItem = nullptr;
             break;
         default:

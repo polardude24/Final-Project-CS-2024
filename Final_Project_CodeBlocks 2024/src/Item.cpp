@@ -27,7 +27,7 @@ string Item::getName()
     return name;
 }
 
-void Item::use()
+void Item::use(Player * _player)
 {
     return;
 }

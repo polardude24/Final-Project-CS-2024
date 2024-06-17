@@ -34,9 +34,6 @@ void AutoSolver::moveAutoSolver(char _input)
 
     loadStack();
 
-    //int maxY, maxX;
-    //getmaxyx(curWin,maxY, maxX);
-
     curMaze->hardMaze1[posY][posX]->setIsCrumb(true); // Make its current position a crumb every time it moves
 
     int numMovesTried = 0;
@@ -51,7 +48,7 @@ void AutoSolver::moveAutoSolver(char _input)
                     posY--;
                     stackBacktrack->push('d');
                     lastMove = 'u';
-                    numMovesTried = 4;
+                    numMovesTried = 100;
                 }
                 else if(curMaze->hardMaze1[posY-1][posX]->getIsCrumb())
                 {
@@ -65,7 +62,7 @@ void AutoSolver::moveAutoSolver(char _input)
                     posX++;
                     stackBacktrack->push('l');
                     lastMove = 'r';
-                    numMovesTried = 4;
+                    numMovesTried = 100;
                 }
                 else if(curMaze->hardMaze1[posY][posX+1]->getIsCrumb())
                 {
@@ -79,7 +76,7 @@ void AutoSolver::moveAutoSolver(char _input)
                     posY++;
                     stackBacktrack->push('u');
                     lastMove = 'd';
-                    numMovesTried = 4;
+                    numMovesTried = 100;
                 }
                 else if(curMaze->hardMaze1[posY+1][posX]->getIsCrumb())
                 {
@@ -93,7 +90,7 @@ void AutoSolver::moveAutoSolver(char _input)
                     posX--;
                     stackBacktrack->push('r');
                     lastMove = 'l';
-                    numMovesTried = 4;
+                    numMovesTried = 100;
                 }
                 else if(curMaze->hardMaze1[posY][posX-1]->getIsCrumb())
                 {
