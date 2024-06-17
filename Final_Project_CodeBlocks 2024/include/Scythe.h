@@ -8,6 +8,7 @@ class Scythe : public Item
 {
     public:
         Scythe();
+        Scythe(WINDOW * _curWin);
         virtual ~Scythe();
 
         void use();

@@ -43,10 +43,8 @@ void Player::movePlayer(char _input)
     //    curMaze->hardMaze1[posY][posX]->setType('.');
     //}
 
-    int maxY, maxX;
-    getmaxyx(curWin,maxY, maxX);
 
-    curMaze->hardMaze1[posY][posX]->setIsOccupied(false);
+    curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
 
     switch (_input)
     {
@@ -54,32 +52,24 @@ void Player::movePlayer(char _input)
             if(curMaze->hardMaze1[posY-1][posX]->getIsTraversable())
             {
                 posY--;
-                if(posY <= 0)
-                    posY = 1;
             }
             break;
         case 's':
             if(curMaze->hardMaze1[posY+1][posX]->getIsTraversable())
             {
                 posY++;
-                if(posY >= maxY)
-                    posY = maxY - 1;
             }
             break;
         case 'a':
             if(curMaze->hardMaze1[posY][posX-1]->getIsTraversable())
             {
                 posX--;
-                if(posX <= 0)
-                    posX = 1;
             }
             break;
         case 'd':
             if(curMaze->hardMaze1[posY][posX+1]->getIsTraversable())
             {
                 posX++;
-                if(posX >= maxX)
-                    posX = maxX-1;
             }
             break;
         default:
@@ -104,8 +94,7 @@ void Player::movePlayer(char _input)
 
     display();
 
-    curMaze->hardMaze1[posY][posX]->setIsOccupied(true);
-
+    curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
     return;
 }
 

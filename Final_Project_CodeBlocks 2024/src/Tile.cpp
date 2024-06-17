@@ -19,7 +19,6 @@ Tile::Tile(WINDOW* _curWin, int _posY, int _posX, char _type, bool _isTraversabl
     color = _color;
     isCrumb = false;
     item = nullptr;
-    isOccupied = false;
 }
 
 void Tile::display() // Displays a tile in its window
@@ -30,11 +29,11 @@ void Tile::display() // Displays a tile in its window
         mvwprintw(curWin, posY+1, (2*posX)+1, "%c%c", item->getType(),item->getType());
         wattroff(curWin, COLOR_PAIR(3));
     }
-    else if(isOccupied)
+    else if(isCrumb)
     {
-        wattron(curWin, COLOR_PAIR(1));
-        mvwprintw(curWin, posY+1, (2*posX)+1, "%c%c", type,type);
-        wattroff(curWin, COLOR_PAIR(1));
+        wattron(curWin, color);
+        mvwprintw(curWin, posY+1, (2*posX)+1, "..");
+        wattroff(curWin, color);
     }
     else
     {

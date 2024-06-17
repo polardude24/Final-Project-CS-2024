@@ -39,15 +39,14 @@ int main(int argc, char** argv)
     //printw("    %c", char(177));
     //int input = getch();
     //printw("%i",input);
-    attron(A_BOLD);
-    printw("    NOTE: WASD is for move; arrow keys are for navigating menus");
-    attroff(A_BOLD);
 
-    Game game;
-    game.initializeGame();
-    game.runGame();
+    //printw("Please enter your name:")
+    Game* game = new Game();
+    game->initializeGame();
+    game->runGame();
 
-    getch();
+    clear();
+    //getch();
     endwin();
     return 0;
 }

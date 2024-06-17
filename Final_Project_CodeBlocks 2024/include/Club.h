@@ -8,6 +8,7 @@ class Club : public Item
 {
     public:
         Club();
+        Club(WINDOW * _curWin);
         virtual ~Club();
 
         void use();

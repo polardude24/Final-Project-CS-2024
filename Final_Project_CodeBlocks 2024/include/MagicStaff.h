@@ -8,6 +8,7 @@ class MagicStaff : public Item
 {
     public:
         MagicStaff();
+        MagicStaff(WINDOW * _curWin);
         virtual ~MagicStaff();
 
         void use();

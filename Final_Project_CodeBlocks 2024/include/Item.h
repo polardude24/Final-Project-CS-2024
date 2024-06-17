@@ -9,7 +9,7 @@ class Item : public Utility
 {
     public:
         Item();
-        Item(WINDOW * _curWin, int _id, string _name, char _type);
+        Item(WINDOW * _curWin, string _name, char _type);
         virtual ~Item();
 
         char getType();
@@ -22,9 +22,9 @@ class Item : public Utility
     protected:
         WINDOW * curWin;
         Player * player;
-        int id;
         char type;
         string name;
+        string info;
 
     private:
 };

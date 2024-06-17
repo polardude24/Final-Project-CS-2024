@@ -8,6 +8,7 @@ class MetalClub : public Item
 {
     public:
         MetalClub();
+        MetalClub(WINDOW * _curWin);
         virtual ~MetalClub();
 
         void use();

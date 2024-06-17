@@ -8,6 +8,7 @@ class HealthPotion : public Item
 {
     public:
         HealthPotion();
+        HealthPotion(WINDOW * _curWin);
         virtual ~HealthPotion();
 
         void use();

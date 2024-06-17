@@ -8,6 +8,7 @@ class GarlicClove : public Item
 {
     public:
         GarlicClove();
+        GarlicClove(WINDOW * _curWin);
         virtual ~GarlicClove();
 
         void use();

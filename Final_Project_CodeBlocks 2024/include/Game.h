@@ -24,6 +24,7 @@
 #include "AcidPotion.h"
 #include "StrangeMeat.h"
 #include "MagicStaff.h"
+#include "AutoSolver.h"
 
 class Game : public Utility
 {
@@ -49,11 +50,16 @@ class Game : public Utility
         void moveMonsters();
         void resetWins();
         bool didWin();
+        bool didWinAutoSolver();
         void printToConsole(string _input);
 
         void handleCombat(int _input);
         void playerAttack();
         void monsterAttack();
+
+        void displayStack();
+
+        void handleInventory();
 
         void highlightMaze();
         void highlightInventory();
@@ -62,7 +68,6 @@ class Game : public Utility
         Item * generateItem();
 
         static const int numMonsters = 5;
-        static const int numItems = 10;
         static const int numItemTypes = 10;
 
     protected:
@@ -74,9 +79,9 @@ class Game : public Utility
         WINDOW * consoleWin;
         Maze * maze;
         Player * player;
+        AutoSolver * autoSolver;
         Monster * monsters[numMonsters];
         Monster * monsterInCombat;
-        Item * items[numItems];
         Item * selectedItem;
         LinkedList * inventory;
         int selectedWin;

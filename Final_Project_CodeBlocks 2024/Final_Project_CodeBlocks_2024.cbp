@@ -39,6 +39,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/AcidPotion.h" />
+		<Unit filename="include/AutoSolver.h" />
 		<Unit filename="include/Club.h" />
 		<Unit filename="include/ContainerQ.h" />
 		<Unit filename="include/ContainerStack.h" />
@@ -66,6 +67,7 @@
 		<Unit filename="include/Utility.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AcidPotion.cpp" />
+		<Unit filename="src/AutoSolver.cpp" />
 		<Unit filename="src/Club.cpp" />
 		<Unit filename="src/ContainerQ.cpp" />
 		<Unit filename="src/ContainerStack.cpp" />

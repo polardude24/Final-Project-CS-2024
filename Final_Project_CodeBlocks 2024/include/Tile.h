@@ -25,8 +25,6 @@ class Tile : public Utility
         void setItem(Item* val){item = val;}
         Item * getItem(){return item;}
         chtype getColor(){return color;}
-        void setIsOccupied(bool val){isOccupied = val;}
-        bool getIsOccupied(){return isOccupied;}
 
         void display();
 
@@ -39,7 +37,6 @@ class Tile : public Utility
         char type;
         bool isTraversable;
         bool isCrumb;
-        bool isOccupied;
 
     private:
 };

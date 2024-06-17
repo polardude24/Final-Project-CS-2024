@@ -8,6 +8,7 @@ class AcidPotion : public Item
 {
     public:
         AcidPotion();
+        AcidPotion(WINDOW * _curWin);
         virtual ~AcidPotion();
 
         void use();

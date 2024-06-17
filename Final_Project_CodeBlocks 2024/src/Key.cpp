@@ -2,15 +2,14 @@
 
 Key::Key()
 {
+    name = "Key";
+    type = 'K';
     //ctor
 }
 
-Key::Key(WINDOW* _curWin, int _id)
+Key::Key(WINDOW* _curWin) : Key()
 {
     curWin = _curWin;
-    id = _id;
-    name = "Key";
-    type = 'K';
 }
 
 Key::~Key()

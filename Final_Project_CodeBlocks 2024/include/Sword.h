@@ -8,6 +8,7 @@ class Sword : public Item
 {
     public:
         Sword();
+        Sword(WINDOW * _curWin);
         virtual ~Sword();
 
         void use();

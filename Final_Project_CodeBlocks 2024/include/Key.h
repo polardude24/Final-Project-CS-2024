@@ -8,7 +8,7 @@ class Key : public Item
 {
     public:
         Key();
-        Key(WINDOW* _curWin, int _id);
+        Key(WINDOW* _curWin);
         virtual ~Key();
 
         void use();

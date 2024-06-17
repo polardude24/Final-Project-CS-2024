@@ -160,14 +160,14 @@
 1718304304 source:f:\codeblocks\final-project-cs-2024\final project codeblocks 2024\src\item.cpp
 	"Item.h"
 
-1718517901 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\main.cpp
+1718596192 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\main.cpp
 	<curses.h>
 	<string>
 	<cstdlib>
 	<ctime>
 	"Game.h"
 
-1718518656 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\game.h
+1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\game.h
 	<Utility.h>
 	"Maze.h"
 	"Menu.h"
@@ -191,6 +191,7 @@
 	"AcidPotion.h"
 	"StrangeMeat.h"
 	"MagicStaff.h"
+	"AutoSolver.h"
 
 1718511330 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\utility.h
 	<string>
@@ -200,11 +201,11 @@
 	<Utility.h>
 	"Tile.h"
 
-1718515589 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\tile.h
+1718577034 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\tile.h
 	<Utility.h>
 	"Item.h"
 
-1718516524 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\item.h
+1718574546 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\item.h
 	<Utility.h>
 
 1718070322 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\menu.h
@@ -242,22 +243,22 @@
 
 1717953789 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\containerq.h
 
-1717953731 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\containerstack.cpp
+1718592394 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\containerstack.cpp
 	"ContainerStack.h"
 
-1717953731 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\containerstack.h
+1718591759 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\containerstack.h
 
-1718518304 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\entity.cpp
+1718592696 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\entity.cpp
 	"Entity.h"
 
-1718519877 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\game.cpp
+1718598794 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\game.cpp
 	"Game.h"
 	"curses.h"
 	<string>
 	<cstdlib>
 	<ctime>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\item.cpp
+1718576669 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\item.cpp
 	"Item.h"
 
 1718334733 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\linkedlist.cpp
@@ -276,14 +277,14 @@
 1718511049 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\menubar.cpp
 	"MenuBar.h"
 
-1718518332 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\monster.cpp
+1718592867 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\monster.cpp
 	"Monster.h"
 
 1718245638 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\node.cpp
 	"Node.h"
 	<iostream>
 
-1718518304 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\player.cpp
+1718592867 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\player.cpp
 	"Player.h"
 
 1717953774 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\queue.cpp
@@ -291,74 +292,83 @@
 
 1717953774 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\queue.h
 
-1717953708 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\stack.cpp
+1718597740 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\stack.cpp
 	"Stack.h"
 
-1717953708 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\stack.h
+1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\stack.h
+	"ContainerStack.h"
 
-1718487193 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\tile.cpp
+1718596800 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\tile.cpp
 	"Tile.h"
 
 1718511369 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\utility.cpp
 	"Utility.h"
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\acidpotion.cpp
+1718578657 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\acidpotion.cpp
 	"AcidPotion.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\acidpotion.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\acidpotion.h
 	<Item.h>
 
-1718515387 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\club.cpp
+1718572985 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\club.cpp
 	"Club.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\club.h
+1718572544 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\club.h
 	<Item.h>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\garlicclove.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\garlicclove.cpp
 	"GarlicClove.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\garlicclove.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\garlicclove.h
 	<Item.h>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\healthpotion.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\healthpotion.cpp
 	"HealthPotion.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\healthpotion.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\healthpotion.h
 	<Item.h>
 
-1718515387 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\magicstaff.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\magicstaff.cpp
 	"MagicStaff.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\magicstaff.h
+1718572754 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\magicstaff.h
 	<Item.h>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\metalclub.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\metalclub.cpp
 	"MetalClub.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\metalclub.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\metalclub.h
 	<Item.h>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\scythe.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\scythe.cpp
 	"Scythe.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\scythe.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\scythe.h
 	<Item.h>
 
-1718515337 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\strangemeat.cpp
+1718572980 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\strangemeat.cpp
 	"StrangeMeat.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\strangemeat.h
+1718572733 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\strangemeat.h
 	<Item.h>
 
-1718515535 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\sword.cpp
+1718576669 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\sword.cpp
 	"Sword.h"
 
-1718515337 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\sword.h
+1718576457 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\sword.h
 	<Item.h>
 
-1718516863 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\key.cpp
+1718572926 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\key.cpp
 	"Key.h"
 
-1718516863 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\key.h
+1718572413 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\key.h
 	<Item.h>
+
+1718598874 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\autosolver.cpp
+	"AutoSolver.h"
+
+1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\autosolver.h
+	"Stack.h"
+	"Maze.h"
+	"Utility.h"
 

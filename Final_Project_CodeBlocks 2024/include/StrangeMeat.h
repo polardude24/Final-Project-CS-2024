@@ -8,6 +8,7 @@ class StrangeMeat : public Item
 {
     public:
         StrangeMeat();
+        StrangeMeat(WINDOW * _curWin);
         virtual ~StrangeMeat();
 
         void use();
