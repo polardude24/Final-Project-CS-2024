@@ -16,7 +16,7 @@ class Item : public Utility
         string getName();
 
         void display(WINDOW*);
-        virtual void use(Player* _player);
+        virtual void use();
         //virtual void makeThisClassAbstractWeeeee() = 0;
 
     protected:
