@@ -34,47 +34,58 @@ int main(int argc, char** argv)
 
     // # = 48 + #
 
+    char playAgain = '1';
+    while(playAgain == '1')
+    {
+        printw("Which maze would you like to use?");
+        mvprintw(1,0, "1) Small maze (20x20)");
+        mvprintw(2,0, "2) Medium maze (30x30)");
+        mvprintw(3,0, "3) Large maze (40x40)");
 
-    printw("Which maze would you like to use?");
-    mvprintw(1,0, "1) Small maze (20x20)");
-    mvprintw(2,0, "2) Medium maze (30x30)");
-    mvprintw(3,0, "3) Large maze (40x40)");
-    refresh();
-    char mazeChoice = getch();
-    clear();
-    printw("Would you like to run the Auto Solver?");
-    mvprintw(1,0, "1) Yes");
-    mvprintw(2,0, "2) No");
-    int autoSolverChoice = getch();
-    int mazeChoiceInt = 0;
-    bool autoSolverChoiceBool = false;
-    switch(mazeChoice)
-    {
-    case '1':
-        mazeChoiceInt = 1;
-        break;
-    case '2':
-        mazeChoiceInt = 2;
-        break;
-    case '3':
-        mazeChoiceInt = 3;
-        break;
-    default:
-        break;
-    }
-    if(autoSolverChoice == 49)
-    {
-        autoSolverChoiceBool = true;
-    }
-    else if(autoSolverChoice == 50)
-    {
-        autoSolverChoiceBool = false;
+        refresh();
+        char mazeChoice = getch();
+        clear();
+        printw("Would you like to run the Auto Solver?");
+        mvprintw(1,0, "1) Yes");
+        mvprintw(2,0, "2) No");
+        int autoSolverChoice = getch();
+        int mazeChoiceInt = 0;
+        bool autoSolverChoiceBool = false;
+        switch(mazeChoice)
+        {
+        case '1':
+            mazeChoiceInt = 1;
+            break;
+        case '2':
+            mazeChoiceInt = 2;
+            break;
+        case '3':
+            mazeChoiceInt = 3;
+            break;
+        default:
+            break;
+        }
+        if(autoSolverChoice == 49)
+        {
+            autoSolverChoiceBool = true;
+        }
+        else if(autoSolverChoice == 50)
+        {
+            autoSolverChoiceBool = false;
+        }
+
+        clear();
+        Game* game = new Game(autoSolverChoiceBool, mazeChoiceInt);
+        game->initializeGame();
+        game->runGame();
+
+        clear();
+        mvprintw(0,0,"Would you like to play again?");
+        mvprintw(1,0,"1) Yes");
+        mvprintw(2,0,"Not 1) No");
+        playAgain = getch();
     }
 
-    clear();
-    Game* game = new Game(autoSolverChoiceBool, mazeChoiceInt);
-    game->initializeGame();
-    game->runGame();
 
 
     //printw("%i",input);
