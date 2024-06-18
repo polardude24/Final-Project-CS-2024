@@ -7,12 +7,12 @@
 class Maze : public Utility
 {
     public:
+        Maze(WINDOW* _curWin, int _mazeChoice);
         Maze(WINDOW* _curWin, int _mazeHeight, int mazeWidth, int _endPosY, int _endPosX, int _startPosY, int _startPosX);
         virtual ~Maze();
         static const char mazeTemplate1[20][20];
-        // getters and setters
-        //int getFogDistance() { return fogDistance; }
-        //void setFogDistance(int val) { fogDistance = val; }
+        static const char mazeTemplate2[30][30];
+        static const char mazeTemplate3[40][40];
         int getMazeHeight() { return mazeHeight; }
         void setMazeHeight(int val) { mazeHeight = val; }
         int getMazeWidth() { return mazeWidth; }
@@ -24,21 +24,19 @@ class Maze : public Utility
         int getStartPosX(){return startPosX;}
         int getStartPosY(){return startPosY;}
 
-        void display(bool _useHardMaze);
-        Maze * generateMaze();
+        void display(int _whichMaze);
 
         // these HAVE to be public, because I have no clue how to return this in a get function
         Tile* hardMaze1[20][20];
-        Tile* generatedMaze[40][40];
+        Tile* hardMaze2[30][30];
+        Tile* hardMaze3[30][30];
 
     protected:
 
     private:
         WINDOW * curWin;
-        //int fogDistance;
         int mazeHeight;
         int mazeWidth;
-        //const char mazeTemplate1[10][10];
         int endPosX;
         int endPosY;
         int startPosX;

@@ -27,7 +27,12 @@ string Item::getName()
     return name;
 }
 
-void Item::use(Player * _player)
+float Item::use()
 {
-    return;
+    return 0.0;
+}
+
+bool Item::getMultiply()
+{
+    return false;
 }

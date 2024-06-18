@@ -4,9 +4,22 @@ Monster::Monster()
 {
     //ctor
 }
-Monster::Monster(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type) : Entity(_curWin, _curMaze, _curTile, _hp, _name, _strength, _id, _type)
+Monster::Monster(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice) : Entity(_curWin, _curMaze, _curTile, _hp, _name, _strength, _id, _type, _mazeChoice)
 {
-    curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
+    switch(mazeChoice)
+    {
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(false);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(false);
+        break;
+    default:
+        break;
+    }
     isInCombat = false;
 }
 
@@ -23,7 +36,20 @@ void Monster::moveMonster(char _input)
         return;
     }
 
-    curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
+    switch(mazeChoice)
+    {
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(true);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(true);
+        break;
+    default:
+        break;
+    }
 
     switch (_input)
     {
@@ -42,7 +68,21 @@ void Monster::moveMonster(char _input)
         default:
             break;
     }
-    curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
+
+    switch(mazeChoice)
+    {
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(false);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(false);
+        break;
+    default:
+        break;
+    }
     return;
 }
 

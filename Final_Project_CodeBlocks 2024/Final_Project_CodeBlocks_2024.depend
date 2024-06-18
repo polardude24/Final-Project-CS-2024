@@ -160,14 +160,14 @@
 1718304304 source:f:\codeblocks\final-project-cs-2024\final project codeblocks 2024\src\item.cpp
 	"Item.h"
 
-1718596192 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\main.cpp
+1718678214 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\main.cpp
 	<curses.h>
 	<string>
 	<cstdlib>
 	<ctime>
 	"Game.h"
 
-1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\game.h
+1718679195 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\game.h
 	<Utility.h>
 	"Maze.h"
 	"Menu.h"
@@ -181,23 +181,15 @@
 	"Item.h"
 	"LinkedList.h"
 	"Node.h"
-	"Sword.h"
-	"Club.h"
-	"GarlicClove.h"
-	"MetalClub.h"
-	"Scythe.h"
-	"Key.h"
-	"HealthPotion.h"
-	"AcidPotion.h"
-	"StrangeMeat.h"
-	"MagicStaff.h"
+	"Weapon.h"
+	"Consumable.h"
 	"AutoSolver.h"
 
 1718511330 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\utility.h
 	<string>
 	"curses.h"
 
-1718228329 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\maze.h
+1718678883 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\maze.h
 	<Utility.h>
 	"Tile.h"
 
@@ -205,7 +197,7 @@
 	<Utility.h>
 	"Item.h"
 
-1718574546 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\item.h
+1718674581 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\item.h
 	<Utility.h>
 
 1718070322 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\menu.h
@@ -215,27 +207,27 @@
 	<Utility.h>
 	"Menu.h"
 
-1718518375 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\entity.h
+1718681266 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\entity.h
 	<Utility.h>
 	"Tile.h"
 	"Maze.h"
 	"LinkedList.h"
 
-1718515535 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\linkedlist.h
+1718636590 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\linkedlist.h
 	"Utility.h"
 	"Item.h"
 
-1718518312 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\player.h
+1718681341 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\player.h
 	<Entity.h>
 	"LinkedList.h"
 	"Node.h"
 	"Item.h"
 
-1718246867 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\node.h
+1718636590 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\node.h
 	"Utility.h"
 	"Item.h"
 
-1718518304 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\monster.h
+1718681322 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\monster.h
 	<Entity.h>
 
 1717953789 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\containerq.cpp
@@ -248,17 +240,17 @@
 
 1718591759 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\containerstack.h
 
-1718592696 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\entity.cpp
+1718681266 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\entity.cpp
 	"Entity.h"
 
-1718598794 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\game.cpp
+1718681905 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\game.cpp
 	"Game.h"
 	"curses.h"
 	<string>
 	<cstdlib>
 	<ctime>
 
-1718576669 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\item.cpp
+1718674581 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\item.cpp
 	"Item.h"
 
 1718334733 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\linkedlist.cpp
@@ -267,7 +259,7 @@
 	<stdexcept>
 	<iostream>
 
-1718488971 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\maze.cpp
+1718681409 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\maze.cpp
 	"Maze.h"
 	"Tile.h"
 
@@ -277,14 +269,14 @@
 1718511049 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\menubar.cpp
 	"MenuBar.h"
 
-1718592867 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\monster.cpp
+1718681612 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\monster.cpp
 	"Monster.h"
 
 1718245638 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\node.cpp
 	"Node.h"
 	<iostream>
 
-1718592867 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\player.cpp
+1718681612 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\player.cpp
 	"Player.h"
 
 1717953774 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\queue.cpp
@@ -292,10 +284,10 @@
 
 1717953774 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\queue.h
 
-1718597740 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\stack.cpp
+1718662718 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\stack.cpp
 	"Stack.h"
 
-1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\stack.h
+1718662692 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\stack.h
 	"ContainerStack.h"
 
 1718596800 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\tile.cpp
@@ -364,11 +356,23 @@
 1718572413 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\key.h
 	<Item.h>
 
-1718598874 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\autosolver.cpp
+1718680270 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\autosolver.cpp
 	"AutoSolver.h"
 
-1718598040 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\autosolver.h
+1718668345 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\autosolver.h
 	"Stack.h"
 	"Maze.h"
 	"Utility.h"
+
+1718674423 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\consumable.cpp
+	"Consumable.h"
+
+1718674534 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\consumable.h
+	<Item.h>
+
+1718674423 source:f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\src\weapon.cpp
+	"Weapon.h"
+
+1718674534 f:\codeblocks\final-project-cs-2024\final_project_codeblocks 2024\include\weapon.h
+	<Item.h>
 

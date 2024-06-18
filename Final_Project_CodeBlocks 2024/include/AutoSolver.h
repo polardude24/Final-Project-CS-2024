@@ -24,9 +24,12 @@ class AutoSolver : public Utility
         Stack* getStackBackTrack(){return stackBacktrack;}
 
         void display();
-        void moveAutoSolver(char _input);
+        void moveAutoSolver();
         void loadStack();
         void backTrack();
+        bool checkDirection(char _directionToCheck);
+        void moveDirection(char _directionToMove);
+        void backTrackExit();
 
     protected:
 
@@ -35,10 +38,12 @@ class AutoSolver : public Utility
         Maze* curMaze;
         Stack* stackMain;
         Stack* stackBacktrack;
+        Stack* stackExit;
         char lastMove;
         int posX;
         int posY;
         bool hasKey;
+        bool hasMetExit;
 };
 
 #endif // AUTOSOLVER_H

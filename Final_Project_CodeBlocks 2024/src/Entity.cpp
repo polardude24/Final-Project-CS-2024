@@ -13,8 +13,9 @@ Entity::Entity()
     posY = -1;
     isAlive = false;
     type = ' ';
+    mazeChoice = 0;
 }
-Entity::Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type)
+Entity::Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice)
 {
     curWin = _curWin;
     curTile = _curTile;
@@ -28,6 +29,7 @@ Entity::Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, stri
     isAlive = true;
     type = _type;
     maxHP = hp;
+    mazeChoice = _mazeChoice;
 }
 
 Entity::~Entity()

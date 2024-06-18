@@ -13,7 +13,7 @@ class Player : public Entity
         Player();
         using Entity::Entity; // inherit ALL of Entity's constructors
         //Player(WINDOW* _curWin, Maze* _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, int _posY, int _posX, bool _isAlive, char _type); // just in case I need this later
-        Player(WINDOW* _curWin, WINDOW * consoleWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, LinkedList * _inventory);
+        Player(WINDOW* _curWin, WINDOW * consoleWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice, LinkedList * _inventory);
         virtual ~Player();
 
         bool getHasKey() { return hasKey; }

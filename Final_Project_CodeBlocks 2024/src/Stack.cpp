@@ -49,3 +49,18 @@ char Stack::peek()
     }
     return top->getContent();
 }
+int Stack::count()
+{
+    int count = 0;
+    Stack * tempStack = new Stack();
+    while(peek() != ' ')
+    {
+        count++;
+        tempStack->push(pop());
+    }
+    while(tempStack->peek() != ' ')
+    {
+        push(tempStack->pop());
+    }
+    return count;
+}

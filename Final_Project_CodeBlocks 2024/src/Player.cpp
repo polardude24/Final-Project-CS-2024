@@ -6,7 +6,7 @@ Player::Player()
     inventory = nullptr;
     equippedItem = nullptr;
 }
-Player::Player(WINDOW* _curWin, WINDOW* _consoleWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, LinkedList * _inventory) : Entity(_curWin, _curMaze, _curTile, _hp, _name, _strength, _id, _type)
+Player::Player(WINDOW* _curWin, WINDOW* _consoleWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice, LinkedList * _inventory) : Entity(_curWin, _curMaze, _curTile, _hp, _name, _strength, _id, _type, _mazeChoice)
 {
     //Entity(_curWin, _curMaze, _curTile, _hp, _name, _strength, _id, _posY, _posX, _type); CHECK WITH MALOLEY
     /*
@@ -27,6 +27,20 @@ Player::Player(WINDOW* _curWin, WINDOW* _consoleWin, Maze * _curMaze, Tile* _cur
     hasKey = false;
     inventory = _inventory;
     maxHP = hp;
+    switch(mazeChoice)
+    {
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(false);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(false);
+        break;
+    default:
+        break;
+    }
 }
 Player::~Player()
 {
@@ -44,57 +58,193 @@ void Player::movePlayer(char _input)
     //}
 
 
-    curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
-
-    switch (_input)
+    switch(mazeChoice)
     {
-        case 'w':
-            if(curMaze->hardMaze1[posY-1][posX]->getIsTraversable())
-            {
-                posY--;
-            }
-            break;
-        case 's':
-            if(curMaze->hardMaze1[posY+1][posX]->getIsTraversable())
-            {
-                posY++;
-            }
-            break;
-        case 'a':
-            if(curMaze->hardMaze1[posY][posX-1]->getIsTraversable())
-            {
-                posX--;
-            }
-            break;
-        case 'd':
-            if(curMaze->hardMaze1[posY][posX+1]->getIsTraversable())
-            {
-                posX++;
-            }
-            break;
-        default:
-            break;
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(true);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(true);
+        break;
+    default:
+        break;
     }
 
-    if(curMaze->hardMaze1[posY][posX]->getItem() != nullptr)
+    switch(mazeChoice)
     {
-        if(curMaze->hardMaze1[posY][posX]->getItem()->getName() == "Key") // If it's the key
+    case 1:
+        switch (_input)
         {
-            hasKey = true;
+            case 'w':
+                if(curMaze->hardMaze1[posY-1][posX]->getIsTraversable())
+                {
+                    posY--;
+                }
+                break;
+            case 's':
+                if(curMaze->hardMaze1[posY+1][posX]->getIsTraversable())
+                {
+                    posY++;
+                }
+                break;
+            case 'a':
+                if(curMaze->hardMaze1[posY][posX-1]->getIsTraversable())
+                {
+                    posX--;
+                }
+                break;
+            case 'd':
+                if(curMaze->hardMaze1[posY][posX+1]->getIsTraversable())
+                {
+                    posX++;
+                }
+                break;
+            default:
+                break;
         }
-        inventory->insertEnd(curMaze->hardMaze1[posY][posX]->getItem());
-        curMaze->hardMaze1[posY][posX]->setItem(nullptr);
-        wmove(consoleWin, 1,1);
-        winsdelln(consoleWin, 1);
-        mvwprintw(consoleWin, 1, 1, "Picked up an item! Inventory count: %i", inventory->count());
-        box(consoleWin, 0, 0);
-        mvwprintw(consoleWin, 0,2, "CONSOLE WINDOW");
-        wrefresh(consoleWin);
+        break;
+    case 2:
+        switch (_input)
+        {
+            case 'w':
+                if(curMaze->hardMaze2[posY-1][posX]->getIsTraversable())
+                {
+                    posY--;
+                }
+                break;
+            case 's':
+                if(curMaze->hardMaze2[posY+1][posX]->getIsTraversable())
+                {
+                    posY++;
+                }
+                break;
+            case 'a':
+                if(curMaze->hardMaze2[posY][posX-1]->getIsTraversable())
+                {
+                    posX--;
+                }
+                break;
+            case 'd':
+                if(curMaze->hardMaze2[posY][posX+1]->getIsTraversable())
+                {
+                    posX++;
+                }
+                break;
+            default:
+                break;
+        }
+        break;
+    case 3:
+        switch (_input)
+        {
+            case 'w':
+                if(curMaze->hardMaze3[posY-1][posX]->getIsTraversable())
+                {
+                    posY--;
+                }
+                break;
+            case 's':
+                if(curMaze->hardMaze3[posY+1][posX]->getIsTraversable())
+                {
+                    posY++;
+                }
+                break;
+            case 'a':
+                if(curMaze->hardMaze3[posY][posX-1]->getIsTraversable())
+                {
+                    posX--;
+                }
+                break;
+            case 'd':
+                if(curMaze->hardMaze3[posY][posX+1]->getIsTraversable())
+                {
+                    posX++;
+                }
+                break;
+            default:
+                break;
+        }
+        break;
+    default:
+        break;
+    }
+
+    switch(mazeChoice)
+    {
+    case 1:
+        if(curMaze->hardMaze1[posY][posX]->getItem() != nullptr)
+        {
+            if(curMaze->hardMaze1[posY][posX]->getItem()->getName() == "Key") // If it's the key
+            {
+                hasKey = true;
+            }
+            inventory->insertEnd(curMaze->hardMaze1[posY][posX]->getItem());
+            curMaze->hardMaze1[posY][posX]->setItem(nullptr);
+            wmove(consoleWin, 1,1);
+            winsdelln(consoleWin, 1);
+            mvwprintw(consoleWin, 1, 1, "Picked up an item! Inventory count: %i", inventory->count());
+            box(consoleWin, 0, 0);
+            mvwprintw(consoleWin, 0,2, "CONSOLE WINDOW");
+            wrefresh(consoleWin);
+        }
+        break;
+    case 2:
+        if(curMaze->hardMaze2[posY][posX]->getItem() != nullptr)
+        {
+            if(curMaze->hardMaze2[posY][posX]->getItem()->getName() == "Key") // If it's the key
+            {
+                hasKey = true;
+            }
+            inventory->insertEnd(curMaze->hardMaze2[posY][posX]->getItem());
+            curMaze->hardMaze2[posY][posX]->setItem(nullptr);
+            wmove(consoleWin, 1,1);
+            winsdelln(consoleWin, 1);
+            mvwprintw(consoleWin, 1, 1, "Picked up an item! Inventory count: %i", inventory->count());
+            box(consoleWin, 0, 0);
+            mvwprintw(consoleWin, 0,2, "CONSOLE WINDOW");
+            wrefresh(consoleWin);
+        }
+        break;
+    case 3:
+        if(curMaze->hardMaze3[posY][posX]->getItem() != nullptr)
+        {
+            if(curMaze->hardMaze3[posY][posX]->getItem()->getName() == "Key") // If it's the key
+            {
+                hasKey = true;
+            }
+            inventory->insertEnd(curMaze->hardMaze3[posY][posX]->getItem());
+            curMaze->hardMaze3[posY][posX]->setItem(nullptr);
+            wmove(consoleWin, 1,1);
+            winsdelln(consoleWin, 1);
+            mvwprintw(consoleWin, 1, 1, "Picked up an item! Inventory count: %i", inventory->count());
+            box(consoleWin, 0, 0);
+            mvwprintw(consoleWin, 0,2, "CONSOLE WINDOW");
+            wrefresh(consoleWin);
+        }
+        break;
+    default:
+        break;
+    }
+
+    switch(mazeChoice)
+    {
+    case 1:
+        curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
+        break;
+    case 2:
+        curMaze->hardMaze2[posY][posX]->setIsTraversable(false);
+        break;
+    case 3:
+        curMaze->hardMaze3[posY][posX]->setIsTraversable(false);
+        break;
+    default:
+        break;
     }
 
     display();
-
-    curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
     return;
 }
 

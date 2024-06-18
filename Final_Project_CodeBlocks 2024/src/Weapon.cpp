@@ -4,9 +4,10 @@ Weapon::Weapon()
 {
     //ctor
 }
-Weapon::Weapon(WINDOW * _curWin, string _name, char _type, float _strengthModifier) : Item(_curWin, _name, _type)
+Weapon::Weapon(WINDOW * _curWin, string _name, char _type, float _strengthModifier, bool _multiply) : Item(_curWin, _name, _type)
 {
     strengthModifier = _strengthModifier;
+    multiply = _multiply;
 }
 
 Weapon::~Weapon()
@@ -14,8 +15,7 @@ Weapon::~Weapon()
     //dtor
 }
 
-void Weapon::use()
+float Weapon::use()
 {
-
-    return;
+    return strengthModifier;
 }

@@ -32,18 +32,54 @@ int main(int argc, char** argv)
     init_pair(7, COLOR_RED, COLOR_BLACK); // Red text on black background (monster stats)
 
 
-    //for(int i = 0; i < 256; i++)
-    //{
-    //    printw("%c", char(i));
-    //}
-    //printw("    %c", char(177));
-    //int input = getch();
+    // # = 48 + #
+
+
+    printw("Which maze would you like to use?");
+    mvprintw(1,0, "1) Small maze (20x20)");
+    mvprintw(2,0, "2) Medium maze (30x30)");
+    mvprintw(3,0, "3) Large maze (40x40)");
+    refresh();
+    char mazeChoice = getch();
+    clear();
+    printw("Would you like to run the Auto Solver?");
+    mvprintw(1,0, "1) Yes");
+    mvprintw(2,0, "2) No");
+    int autoSolverChoice = getch();
+    int mazeChoiceInt = 0;
+    bool autoSolverChoiceBool = false;
+    switch(mazeChoice)
+    {
+    case '1':
+        mazeChoiceInt = 1;
+        break;
+    case '2':
+        mazeChoiceInt = 2;
+        break;
+    case '3':
+        mazeChoiceInt = 3;
+        break;
+    default:
+        break;
+    }
+    if(autoSolverChoice == 49)
+    {
+        autoSolverChoiceBool = true;
+    }
+    else if(autoSolverChoice == 50)
+    {
+        autoSolverChoiceBool = false;
+    }
+
+    clear();
+    Game* game = new Game(autoSolverChoiceBool, mazeChoiceInt);
+    game->initializeGame();
+    game->runGame();
+
+
     //printw("%i",input);
 
     //printw("Please enter your name:")
-    Game* game = new Game();
-    game->initializeGame();
-    game->runGame();
 
     clear();
     //getch();

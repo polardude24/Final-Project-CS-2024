@@ -8,14 +8,18 @@ class Consumable : public Item
 {
     public:
         Consumable();
-        Consumable(WINDOW * _curWin, string _name, char _type);
+        Consumable(WINDOW * _curWin, string _name, char _type, float _healthModifier, bool _multiply);
         virtual ~Consumable();
 
-        void use();
+        bool getMultiply(){return multiply;}
+
+        float use();
 
     protected:
 
     private:
+        float healthModifier;
+        bool multiply;
 };
 
 #endif // CONSUMABLE_H

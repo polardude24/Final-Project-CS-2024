@@ -17,6 +17,7 @@ class Stack
         void push(char _contentOfNewTop);
         char pop();
         char peek();
+        int count();
 
     protected:
 

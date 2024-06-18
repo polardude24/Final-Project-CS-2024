@@ -11,7 +11,7 @@ class Entity : public Utility
 {
     public:
         Entity();
-        Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type);
+        Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice);
         virtual ~Entity();
 
         float getHP() { return hp; }
@@ -46,6 +46,7 @@ class Entity : public Utility
         int posY;
         bool isAlive;
         char type;
+        int mazeChoice;
 
     private:
 };

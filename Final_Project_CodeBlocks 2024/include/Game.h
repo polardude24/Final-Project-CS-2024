@@ -14,22 +14,15 @@
 #include "Item.h"
 #include "LinkedList.h"
 #include "Node.h"
-#include "Sword.h"
-#include "Club.h"
-#include "GarlicClove.h"
-#include "MetalClub.h"
-#include "Scythe.h"
-#include "Key.h"
-#include "HealthPotion.h"
-#include "AcidPotion.h"
-#include "StrangeMeat.h"
-#include "MagicStaff.h"
+#include "Weapon.h"
+#include "Consumable.h"
 #include "AutoSolver.h"
 
 class Game : public Utility
 {
     public:
         Game();
+        Game(bool _autoSolverFlag, int _mazeChoice);
         virtual ~Game();
 
         WINDOW * getMazeWin(){return mazeWin;}
@@ -57,7 +50,7 @@ class Game : public Utility
         void playerAttack();
         void monsterAttack();
 
-        void displayStack();
+        void displayStack(Stack* _stack, int _line);
 
         void handleInventory();
 
@@ -67,8 +60,8 @@ class Game : public Utility
 
         Item * generateItem();
 
-        static const int numMonsters = 5;
-        static const int numItemTypes = 10;
+        static const int numMonsters = 15;
+        static const int numItemTypes = 9;
 
     protected:
 
@@ -86,7 +79,8 @@ class Game : public Utility
         LinkedList * inventory;
         int selectedWin;
         bool isInCombat;
-
+        bool autoSolverFlag;
+        int mazeChoice;
 };
 
 #endif // GAME_H

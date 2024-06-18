@@ -10,7 +10,7 @@ Game::Game()
     inventoryWin = nullptr;
     combatWin = nullptr;
     consoleWin = nullptr;
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < numMonsters; i++)
     {
         monsters[i] = nullptr;
     }
@@ -18,6 +18,13 @@ Game::Game()
     isInCombat = false;
     selectedItem = nullptr;
     autoSolver = nullptr;
+    autoSolverFlag = false;
+    mazeChoice = 0;
+}
+Game::Game(bool _autoSolverFlag, int _mazeChoice) : Game()
+{
+    autoSolverFlag = _autoSolverFlag;
+    mazeChoice = _mazeChoice;
 }
 
 Game::~Game()
@@ -68,86 +75,190 @@ void Game::initializeGame()
     //---------------------------------------------------------||
 
     // Setup maze
-    maze = new Maze(mazeWin, 20,20,9,11,8,1);
+    maze = new Maze(mazeWin, mazeChoice);
 
-    // Setup player
 
-    //inventory = new LinkedList();
+    if(!autoSolverFlag) // If not auto solving
+    {
+        inventory = new LinkedList();
+        switch(mazeChoice)
+        {
+        case 1:
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze1[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            break;
+        case 2:
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze2[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            break;
+        case 3:
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze3[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            break;
+        default:
+            break;
+        }
+        // setup monsters;
+        switch(mazeChoice)
+        {
+        case 1:
+            monsters[0] = new Monster(mazeWin, maze, maze->hardMaze1[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[1] = new Monster(mazeWin, maze, maze->hardMaze1[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[2] = new Monster(mazeWin, maze, maze->hardMaze1[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[3] = new Monster(mazeWin, maze, maze->hardMaze1[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[4] = new Monster(mazeWin, maze, maze->hardMaze1[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            break;
+        case 2:
+            monsters[0] = new Monster(mazeWin, maze, maze->hardMaze2[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[1] = new Monster(mazeWin, maze, maze->hardMaze2[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[2] = new Monster(mazeWin, maze, maze->hardMaze2[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[3] = new Monster(mazeWin, maze, maze->hardMaze2[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[4] = new Monster(mazeWin, maze, maze->hardMaze2[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            monsters[5] = new Monster(mazeWin, maze, maze->hardMaze2[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[6] = new Monster(mazeWin, maze, maze->hardMaze2[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[7] = new Monster(mazeWin, maze, maze->hardMaze2[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[8] = new Monster(mazeWin, maze, maze->hardMaze2[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[9] = new Monster(mazeWin, maze, maze->hardMaze2[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            break;
+        case 3:
+            monsters[0] = new Monster(mazeWin, maze, maze->hardMaze3[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[1] = new Monster(mazeWin, maze, maze->hardMaze3[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[2] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[3] = new Monster(mazeWin, maze, maze->hardMaze3[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[4] = new Monster(mazeWin, maze, maze->hardMaze3[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            monsters[5] = new Monster(mazeWin, maze, maze->hardMaze3[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[6] = new Monster(mazeWin, maze, maze->hardMaze3[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[7] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[8] = new Monster(mazeWin, maze, maze->hardMaze3[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[9] = new Monster(mazeWin, maze, maze->hardMaze3[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            monsters[10] = new Monster(mazeWin, maze, maze->hardMaze3[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[11] = new Monster(mazeWin, maze, maze->hardMaze3[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[12] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[13] = new Monster(mazeWin, maze, maze->hardMaze3[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[14] = new Monster(mazeWin, maze, maze->hardMaze3[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            break;
+        default:
+            break;
+        }
+        // Setup monsters
 
-    //player = new Player(mazeWin, consoleWin, maze, maze->hardMaze1[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 100.0, 1, 'P', inventory);
-    autoSolver = new AutoSolver(mazeWin, maze, 8,1);
-    maze->hardMaze1[17][3]->setItem(new Key(mazeWin));
-    // Setup monsters
+        // Display windows initially
+        displayMaze();
+        displayInventory();
+        displayCombat();
+        printToConsole("Game intialised. Ready to play and waiting for input!");
+        printToConsole("Use the arrow keys to navigate between windows and menus, enter to select a window, and wasd to move your character");
+        printToConsole("The monsters will move every time you do, except if you become beside them. Combat is initiated if your character is ever beside a monster.");
 
-    //monsters[0] = new Monster(mazeWin, maze, maze->hardMaze1[10][18], 100.0, "Zombie", 20.0, 2, 'Z');
-    //monsters[1] = new Monster(mazeWin, maze, maze->hardMaze1[4][5], 75.0, "Skeleton", 12.0, 3, 'S');
-    //monsters[2] = new Monster(mazeWin, maze, maze->hardMaze1[6][9], 2.0, "Bat", 7000.0, 4, 'B');
-    //monsters[3] = new Monster(mazeWin, maze, maze->hardMaze1[13][3], 250.0, "Golem", 6.0, 5, 'G');
-    //monsters[4] = new Monster(mazeWin, maze, maze->hardMaze1[11][8], 150.0, "Ogre", 15, 6,'O');
+    }
 
-    // Display windows initially
-    //displayMaze();
-    //displayInventory();
-    //displayCombat();
-
-    //printToConsole("Game intialised. Ready to play and waiting for input!");
-    //printToConsole("Use the arrow keys to navigate between windows and menus, enter to select a window, and wasd to move your character");
-    //printToConsole("The monsters will move every time you do, except if you become beside them. Combat is initiated if your character is ever beside a monster.");
-
-    //refresh();
+    else
+    {
+        autoSolver = new AutoSolver(mazeWin, maze, maze->getStartPosY(), maze->getStartPosX());
+        switch(mazeChoice)
+        {
+        case 1:
+            maze->hardMaze1[16][3]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
+            break;
+        case 2:
+            maze->hardMaze2[5][6]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
+            break;
+        case 3:
+            maze->hardMaze3[16][3]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
+            break;
+        }
+        maze->display(mazeChoice);
+        autoSolver->display();
+        wrefresh(mazeWin);
+        mvwprintw(consoleWin, 1,1,"%i, %i", autoSolver->getPosY(), autoSolver->getPosX());
+        displayStack(autoSolver->getStackBackTrack(), 3);
+        displayStack(autoSolver->getStackMain(), 2);
+    }
     //wgetch(consoleWin);
 
     return;
 }
 
+
+
+
+/*
+switch(mazeChoice)
+{
+case 1:
+    hardMaze1
+    break;
+case 2:
+    hardMaze2
+    break;
+case 3:
+    hardMaze4
+    break;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
 
-// Meat of the logic for the gameloop. Many, many lines of code...
+// Meat of the logic for the gameloop
 void Game::runGame()
 {
-    /*
-    while(!didWin() && player->getIsAlive())// continue running the game until the player wins or dies
+    if(!autoSolverFlag)
     {
-        int input = wgetch(consoleWin);
-        handleInput(input);
-        displayCombat();
-        displayInventory();
-        displayConsole();
-        displayMaze();
-        if(!isInCombat) // If not in combat, check to see if the player should be in combat
+        while(!didWin() && player->getIsAlive())// continue running the game until the player wins or dies
         {
-            checkCombat();
+            int input = wgetch(consoleWin);
+            handleInput(input);
             displayCombat();
+            displayInventory();
+            displayConsole();
+            displayMaze();
+            if(!isInCombat) // If not in combat, check to see if the player should be in combat
+            {
+                checkCombat();
+                displayCombat();
+            }
+            else
+            {
+                handleCombat(input);
+                displayCombat();
+            }
         }
-        else
+        if(didWin())// Show that you won the game in the console
         {
-            handleCombat(input);
-            displayCombat();
+            printToConsole("YOU WON! YAY CONGRATS YOU'RE SO GOOD AT THE GAME");
         }
-
+        else// Show that you lost the game in the console
+        {
+            printToConsole("You lost. Try again!");
+        }
     }
-
-    if(didWin())// Show that you won the game in the console
+    if(autoSolverFlag)
     {
-        printToConsole("YOU WON! YAY CONGRATS YOU'RE SO GOOD AT THE GAME");
-    }
-    else// Show that you lost the game in the console
-    {
-        printToConsole("You lost. Try again!");
+        while(!didWinAutoSolver())
+        {
+            wgetch(consoleWin);
+            autoSolver->moveAutoSolver();
+            maze->display(mazeChoice);
+            autoSolver->display();
+            wrefresh(mazeWin);
+            mvwprintw(consoleWin, 1,1,"%i, %i", autoSolver->getPosY(), autoSolver->getPosX());
+            displayStack(autoSolver->getStackBackTrack(), 3);
+            displayStack(autoSolver->getStackMain(), 2);
+            //wrefresh(consoleWin);
+            //wgetch(consoleWin);
+        }
     }
 
-*/
-    while(!didWinAutoSolver())
-    {
-        autoSolver->moveAutoSolver(wgetch(consoleWin));
-        maze->display(true);
-        autoSolver->display();
-        wrefresh(mazeWin);
-        mvwprintw(consoleWin, 1,1,"%i, %i", autoSolver->getPosY(), autoSolver->getPosX());
-        //displayStack();
-        //wrefresh(consoleWin);
-        //wgetch(consoleWin);
-    }
 
     delwin(mazeWin);
     delwin(inventoryWin);
@@ -158,6 +269,39 @@ void Game::runGame()
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------||
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Checks to see if combat should happen
 void Game::checkCombat()
@@ -191,7 +335,7 @@ void Game::checkCombat()
 void Game::displayMaze()
 {
     highlightMaze();
-    maze->display(true); // displays the hardcoded maze
+    maze->display(mazeChoice); // displays the hardcoded maze
     displayMonsters(); // displays all the monsters
     player->display();
     //wgetch(consoleWin);
@@ -209,7 +353,7 @@ void Game::displayInventory()
 {
     if(inventory->count() == 0)
     {
-        mvwprintw(inventoryWin, 1,1, "No Items In Inventory :(");
+        mvwprintw(inventoryWin, 1,1, "No Items In Inventory :(                                                      ");
     }
     else
     {
@@ -251,8 +395,6 @@ void Game::displayCombat()
     {
         int halfX = getmaxx(combatWin)/2;
 
-        float monsterMaxHealth = monsterInCombat->getHP();
-
         // Display player stats
 
         wattron(combatWin, COLOR_PAIR(6));
@@ -277,10 +419,11 @@ void Game::displayCombat()
         mvwprintw(combatWin, 3, 52,"|");
         wattroff(combatWin, COLOR_PAIR(0));
         wattron(combatWin, COLOR_PAIR(6));
-        mvwprintw(combatWin, 4, 1, "Player strength: %i", int(player->getStrength())); // Faster than changing all the variables to float
+        mvwprintw(combatWin, 4, 1, "Player strength: %f", player->getStrength());
         if(player->getEquippedItem() != nullptr)
         {
             mvwprintw(combatWin, 5, 1, "                                               ");
+            wrefresh(combatWin);
             mvwprintw(combatWin, 5, 1, "Item equipped: %s", player->getEquippedItem()->getName().c_str());
         }
         else
@@ -314,7 +457,7 @@ void Game::displayCombat()
         wattroff(combatWin, COLOR_PAIR(0));
 
         wattron(combatWin, COLOR_PAIR(7));
-        mvwprintw(combatWin, 4, halfX, "Monster strength: %i", int(monsterInCombat->getStrength())); // Faster than changing all the variables to float
+        mvwprintw(combatWin, 4, halfX, "Monster strength: %f", monsterInCombat->getStrength());
         wattroff(combatWin, COLOR_PAIR(7));
     }
     else
@@ -345,6 +488,8 @@ void Game::displayCombat()
         mvwprintw(combatWin, 4, 1, "Player strength: %i", int(player->getStrength())); // Faster than changing all the variables to float
         if(player->getEquippedItem() != nullptr)
         {
+            mvwprintw(combatWin, 5, 1, "                                               ");
+            wrefresh(combatWin);
             mvwprintw(combatWin, 5, 1, "Item equipped: %s", player->getEquippedItem()->getName().c_str());
         }
         else
@@ -487,34 +632,103 @@ void Game::moveMonsters()
 
             if(!((mY == y && mX == x) || (mY+1 == y && mX == x) || (mY == y && mX+1 == x) || (mY-1 == y && mX == x) || (mY == y && mX-1 == x))) // If the player is one space away, don't move
             {
-                if( maze->hardMaze1[mY-1][mX]->getIsTraversable())
+                switch(mazeChoice)
                 {
-                    moves[numMovesToTry] = 'u';
-                    numMovesToTry++;
-                }
-                if(maze->hardMaze1[mY][mX+1]->getIsTraversable())
-                {
-                    moves[numMovesToTry] = 'r';
-                    numMovesToTry++;
-                }
-                if(maze->hardMaze1[mY+1][mX]->getIsTraversable())
-                {
-                    moves[numMovesToTry] = 'd';
-                    numMovesToTry++;
-                }
-                if(maze->hardMaze1[mY][mX-1]->getIsTraversable())
-                {
-                    moves[numMovesToTry] = 'l';
-                    numMovesToTry++;
-                }
-                if(numMovesToTry == 1)
-                {
-                    monsters[i]->moveMonster(moves[0]);
-                }
-                else if (numMovesToTry > 1)
-                {
-                    int monsterMoveDecision = randomNumberInt(numMovesToTry);
-                    monsters[i]->moveMonster(moves[monsterMoveDecision]);
+                case 1:
+                    if( maze->hardMaze1[mY-1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'u';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze1[mY][mX+1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'r';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze1[mY+1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'd';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze1[mY][mX-1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'l';
+                        numMovesToTry++;
+                    }
+                    if(numMovesToTry == 1)
+                    {
+                        monsters[i]->moveMonster(moves[0]);
+                    }
+                    else if (numMovesToTry > 1)
+                    {
+                        int monsterMoveDecision = randomNumberInt(numMovesToTry);
+                        monsters[i]->moveMonster(moves[monsterMoveDecision]);
+                    }
+                    break;
+                case 2:
+                    if( maze->hardMaze2[mY-1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'u';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze2[mY][mX+1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'r';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze2[mY+1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'd';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze2[mY][mX-1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'l';
+                        numMovesToTry++;
+                    }
+                    if(numMovesToTry == 1)
+                    {
+                        monsters[i]->moveMonster(moves[0]);
+                    }
+                    else if (numMovesToTry > 1)
+                    {
+                        int monsterMoveDecision = randomNumberInt(numMovesToTry);
+                        monsters[i]->moveMonster(moves[monsterMoveDecision]);
+                    }
+                    break;
+                case 3:
+                    if( maze->hardMaze3[mY-1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'u';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze3[mY][mX+1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'r';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze3[mY+1][mX]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'd';
+                        numMovesToTry++;
+                    }
+                    if(maze->hardMaze3[mY][mX-1]->getIsTraversable())
+                    {
+                        moves[numMovesToTry] = 'l';
+                        numMovesToTry++;
+                    }
+                    if(numMovesToTry == 1)
+                    {
+                        monsters[i]->moveMonster(moves[0]);
+                    }
+                    else if (numMovesToTry > 1)
+                    {
+                        int monsterMoveDecision = randomNumberInt(numMovesToTry);
+                        monsters[i]->moveMonster(moves[monsterMoveDecision]);
+                    }
+                    break;
+                default:
+                    break;
                 }
             }
 
@@ -563,6 +777,8 @@ bool Game::didWinAutoSolver()
     }
     return false;
 }
+
+
 // Basically IS the combat system
 void Game::handleCombat(int _input)
 {
@@ -586,7 +802,6 @@ void Game::handleCombat(int _input)
         int mX = monsterInCombat->getPosX();
         int mY = monsterInCombat->getPosY();
         isInCombat = false;
-        maze->hardMaze1[mY][mX]->setIsTraversable(true);
         //delete monsterInCombat;
         for(int i = 0; i < numMonsters; i++)
         {
@@ -597,8 +812,24 @@ void Game::handleCombat(int _input)
         }
         printToConsole("Monster killed!"); // Display that you killed the monster
         monsterInCombat = nullptr; // Resets the monster in combat to nothing
-        maze->hardMaze1[mY][mX]->setItem(generateItem());// Generate a random item where the monster was
-        player->setHP(player->getMaxHP()); // Reset player health
+        switch(mazeChoice)
+        {
+        case 1:
+            maze->hardMaze1[mY][mX]->setIsTraversable(true);
+            maze->hardMaze1[mY][mX]->setItem(generateItem());// Generate a random item where the monster was
+            break;
+        case 2:
+            maze->hardMaze2[mY][mX]->setIsTraversable(true);
+            maze->hardMaze2[mY][mX]->setItem(generateItem());// Generate a random item where the monster was
+            break;
+        case 3:
+            maze->hardMaze3[mY][mX]->setIsTraversable(true);
+            maze->hardMaze3[mY][mX]->setItem(generateItem());// Generate a random item where the monster was
+            break;
+        default:
+            break;
+        }
+        player->setHP(player->getHP()+player->getMaxHP()/2); // Reset player health t
         wclear(combatWin);
         box(combatWin,0,0);
         highlightCombat();
@@ -662,8 +893,45 @@ void Game::handleInventory()
             }
             break;
         case 10:
-            selectedItem->use();
-            //player->setEquippedItem(selectedItem);
+            if(selectedItem->getType() == 'W') // If selecting a weapon, equip that weapon
+            {
+                if(player->getEquippedItem() != nullptr)
+                {
+                    if(player->getEquippedItem()->getMultiply())
+                    {
+                        player->setStrength(player->getStrength()/player->getEquippedItem()->use());
+                    }
+                    else
+                    {
+                        player->setStrength(player->getStrength()-player->getEquippedItem()->use());
+                    }
+                }
+                player->setEquippedItem(selectedItem);
+                if(player->getEquippedItem() != nullptr)
+                {
+                    if(player->getEquippedItem()->getMultiply())
+                    {
+                        player->setStrength(player->getStrength()*player->getEquippedItem()->use());
+                    }
+                    else
+                    {
+                        player->setStrength(player->getStrength()+player->getEquippedItem()->use());
+                    }
+                }
+            }
+            else
+            {
+                if(selectedItem->getMultiply())
+                {
+                    player->setHP(player->getHP()*selectedItem->use());
+                }
+                else
+                {
+                    player->setHP(player->getHP()+selectedItem->use());
+                }
+                mvwprintw(inventoryWin, inventory->findReturnIndex(selectedItem)+1, 1, "                                                              ");
+                inventory->removeItem(selectedItem);
+            }
             selectedItem = nullptr;
             break;
         default:
@@ -708,37 +976,35 @@ Item* Game::generateItem()
     }
     if(counter == 0)
     {
-        temp = new Key(inventoryWin);
+        temp = new Consumable(inventoryWin, "Key", 'K', 1, true);
         return temp;
     }
-    switch(Utility::randomNumberInt(numItemTypes-2))
+    switch(Utility::randomNumberInt(numItemTypes-1))
     {
     case 0:
-        temp = new Sword(inventoryWin);
+        temp = new Weapon(inventoryWin, "Sword", 'W', 10.0, false);
         break;
     case 1:
-        temp = new Club(inventoryWin);
+        temp = new Weapon(inventoryWin, "Club", 'W', 1.25, true);
         break;
     case 2:
-        temp = new GarlicClove(inventoryWin);
+        temp = new Consumable(inventoryWin, "GarlicClove", 'C', 30, false);
         break;
     case 3:
-        temp = new MetalClub(inventoryWin);
+        temp = new Weapon(inventoryWin, "Metal Club", 'W', 15.0, false);
         break;
     case 4:
-        temp = new Scythe(inventoryWin);
+        temp = new Weapon(inventoryWin, "Scythe", 'W', 2.2, true);
         break;
     case 5:
-        temp = new HealthPotion(inventoryWin);
+        temp = new Consumable(inventoryWin, "Health Potion", 'C', 50, false);
         break;
     case 6:
-        temp = new AcidPotion(inventoryWin);
+        temp = new Consumable(inventoryWin, "Acid Potion", 'C', 0.2, true);
         break;
     case 7:
-        temp = new StrangeMeat(inventoryWin);
+        temp = new Consumable(inventoryWin, "Strange Meat", 'C', 100, false);
         break;
-    case 8:
-        temp = new MagicStaff(inventoryWin);
         break;
     default:
         break;
@@ -746,19 +1012,27 @@ Item* Game::generateItem()
     return temp;
 }
 
-void Game::displayStack()
+void Game::displayStack(Stack* _stack, int _line)
 {
     int counter = 1;
     Stack* tempStack = new Stack();
-    while(autoSolver->getStackMain()->peek() != ' ')
+    wmove(consoleWin, _line,1);
+    wprintw(consoleWin, "                                                                                                                                                                                                       ");
+    wrefresh(consoleWin);
+    while(_stack->peek() != ' ')
     {
-        mvwaddch(consoleWin, 2, counter, autoSolver->getStackMain()->peek());
-        tempStack->push(autoSolver->getStackMain()->pop());
-        counter++;
+        mvwaddch(consoleWin, _line, counter, _stack->peek());
+        tempStack->push(_stack->pop());
+        if(_stack->peek() != ' ')
+        {
+            mvwaddch(consoleWin, _line, counter+1, ',');
+        }
+        counter+=2;
     }
     while(tempStack->peek() != ' ')
     {
-        autoSolver->getStackMain()->push(tempStack->pop());
+        _stack->push(tempStack->pop());
     }
+    mvwprintw(consoleWin, 4, 1, "%i",_stack->count());
     return;
 }

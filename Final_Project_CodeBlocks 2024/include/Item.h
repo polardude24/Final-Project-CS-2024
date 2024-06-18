@@ -3,8 +3,6 @@
 
 #include <Utility.h>
 
-class Player;
-
 class Item : public Utility
 {
     public:
@@ -16,12 +14,12 @@ class Item : public Utility
         string getName();
 
         void display(WINDOW*);
-        virtual void use();
+        virtual float use();
+        virtual bool getMultiply();
         //virtual void makeThisClassAbstractWeeeee() = 0;
 
     protected:
         WINDOW * curWin;
-        Player * player;
         char type;
         string name;
         string info;

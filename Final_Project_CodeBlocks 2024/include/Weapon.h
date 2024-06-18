@@ -8,18 +8,18 @@ class Weapon : public Item
 {
     public:
         Weapon();
-        Weapon(WINDOW * _curWin, string _name, char _type, float _strengthModifier);
+        Weapon(WINDOW * _curWin, string _name, char _type, float _strengthModifier, bool _multiply);
         virtual ~Weapon();
 
-        float GetstrengthModifier() { return strengthModifier; }
-        void SetstrengthModifier(float val) { strengthModifier = val; }
+        bool getMultiply(){return multiply;}
 
-        void use();
+        float use();
 
     protected:
 
     private:
         float strengthModifier;
+        bool multiply;
 };
 
 #endif // WEAPON_H
