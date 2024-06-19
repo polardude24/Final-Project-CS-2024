@@ -3,6 +3,8 @@
 
 #include "ContainerStack.h"
 
+// It's a stack... no need for further explanation
+
 class Stack
 {
     public:

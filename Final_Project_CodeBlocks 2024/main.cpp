@@ -4,6 +4,16 @@
 #include <ctime>
 
 
+/**
+
+NOTE: After I finished adding the functionality to have the 3 mazes (last thing I did), I realised that I could have made a "getHardMaze()" function in maze, and instantly remove 2/3 of the added code.
+Just so you know, the code was actually relatively elegant before the horrible spaghetti of switch statements was added to game, player, monster, and autosolver
+
+So, anywhere where you might see switch(mazeChoice), just look at the first one because the other two will be completely identical except any call to
+hardMaze1[y][x] is replaced with hardMaze2 or 3 respectively. I'm sorry again in advance for what you have to read.
+
+*/
+
 #include "Game.h"
 
 using namespace std;
@@ -32,7 +42,7 @@ int main(int argc, char** argv)
     init_pair(7, COLOR_RED, COLOR_BLACK); // Red text on black background (monster stats)
 
 
-    // # = 48 + #
+    // Simple menu, hastily made at the end so not expandable but gets the job done.
 
     char playAgain = '1';
     while(playAgain == '1')

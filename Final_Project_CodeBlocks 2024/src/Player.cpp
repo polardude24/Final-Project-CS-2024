@@ -27,7 +27,7 @@ Player::Player(WINDOW* _curWin, WINDOW* _consoleWin, Maze * _curMaze, Tile* _cur
     hasKey = false;
     inventory = _inventory;
     maxHP = hp;
-    switch(mazeChoice)
+    switch(mazeChoice) // Set itself to not traversable so that the monsters don't move onto the player's position immediately
     {
     case 1:
         curMaze->hardMaze1[posY][posX]->setIsTraversable(false);
@@ -49,16 +49,7 @@ Player::~Player()
 
 void Player::movePlayer(char _input)
 {
-
-    // Accidentally started writing code for the autosolver into entity. Oops!
-    //curMaze->hardMaze1[posY][posX]->setIsCrumb(true);
-    //if(curMaze->hardMaze1[posY][posX]->getType() != 'X' && curMaze->hardMaze1[posY][posX]->getType() != 'B') // if it isn't the beginning or end tile, change its display to ..
-    //{
-    //    curMaze->hardMaze1[posY][posX]->setType('.');
-    //}
-
-
-    switch(mazeChoice)
+    switch(mazeChoice) // Set its own position to traversable
     {
     case 1:
         curMaze->hardMaze1[posY][posX]->setIsTraversable(true);
@@ -78,6 +69,7 @@ void Player::movePlayer(char _input)
     case 1:
         switch (_input)
         {
+            // If can move in a direction, move in that direction
             case 'w':
                 if(curMaze->hardMaze1[posY-1][posX]->getIsTraversable())
                 {
@@ -175,14 +167,16 @@ void Player::movePlayer(char _input)
     switch(mazeChoice)
     {
     case 1:
+        // If there is an item on the tile, pick it up
         if(curMaze->hardMaze1[posY][posX]->getItem() != nullptr)
         {
-            if(curMaze->hardMaze1[posY][posX]->getItem()->getName() == "Key") // If it's the key
+            if(curMaze->hardMaze1[posY][posX]->getItem()->getName() == "Key") // If it's the key, set the hasKey bool to true
             {
                 hasKey = true;
             }
-            inventory->insertEnd(curMaze->hardMaze1[posY][posX]->getItem());
-            curMaze->hardMaze1[posY][posX]->setItem(nullptr);
+            inventory->insertEnd(curMaze->hardMaze1[posY][posX]->getItem()); // Add it to the inventory
+            curMaze->hardMaze1[posY][posX]->setItem(nullptr); // Remove the item from that position in the maze
+            // Print to the console that you picked up an item. Yes that is 6 lines of code.
             wmove(consoleWin, 1,1);
             winsdelln(consoleWin, 1);
             mvwprintw(consoleWin, 1, 1, "Picked up an item! Inventory count: %i", inventory->count());
@@ -229,6 +223,7 @@ void Player::movePlayer(char _input)
         break;
     }
 
+    // Set the player's position to non traversable at the end of every move
     switch(mazeChoice)
     {
     case 1:
@@ -248,6 +243,7 @@ void Player::movePlayer(char _input)
     return;
 }
 
+// displays the player...
 void Player::display()
 {
     wattron(curWin, COLOR_PAIR(2));

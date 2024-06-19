@@ -50,9 +50,9 @@ void LinkedList::insertNth(int _index, Item* _item) // Insert at the n'th positi
   insertAfter(index(_index), _item);
   return;
 }
-void LinkedList::insertAfterValue(Item* _itemLookingFor, Item* _itemToInsert) // Insert after the first occurance of a given value
+void LinkedList::insertAfterValue(Item* _itemLookingFor, Item* _itemToInsert) // Insert after the first occurance of a given item
 {
-  if(search(_itemLookingFor)) // If the value looking for is in the array, insert after that
+  if(search(_itemLookingFor)) // If the item looking for is in the array, insert after that
   {
     Node* temp = new Node;
     temp = searchReturn(_itemLookingFor);
@@ -60,7 +60,7 @@ void LinkedList::insertAfterValue(Item* _itemLookingFor, Item* _itemToInsert) //
   }
   return;
 }
-void LinkedList::removeItem(Item* _itemToRemove) // Remove the first occurance of a given value
+void LinkedList::removeItem(Item* _itemToRemove) // Remove the first occurance of a given item
 {
   remove(searchReturn(_itemToRemove));
   return;
@@ -82,7 +82,7 @@ void LinkedList::removeEnd() // Renove the back of the list
 }
 
 // Not-Wrapper methods ||--------------------------------------------------------------------------------------------------------||
-bool LinkedList::search(Item* _itemSearchingFor) // Searches for a given value in the list
+bool LinkedList::search(Item* _itemSearchingFor) // Searches for a given item in the list
 {
   if (front == nullptr) // If nothing in the list, throw error
   {
@@ -118,7 +118,7 @@ bool LinkedList::search(Node* _nodeSearchingFor) // Searches for a given node in
   return false;
 }
 
-Node* LinkedList::index(int _n) // Returns the n'th value in the list
+Node* LinkedList::index(int _n) // Returns the n'th item in the list
 {
   Node* temp = front;
   for(int i = 0; i <= _n; i++)
@@ -136,7 +136,7 @@ Node* LinkedList::index(int _n) // Returns the n'th value in the list
   return nullptr;
 }
 
-Node* LinkedList::findItem(Item* _itemSearchingFor) // Finds the first occurance of a value, and returns that node
+Node* LinkedList::findItem(Item* _itemSearchingFor) // Finds the first occurance of an item, and returns that node
 {
   if (front == nullptr) // If nothing in the list, throw error
   {
@@ -159,7 +159,7 @@ int LinkedList::findReturnIndex(Item* _itemSearchingFor)
 {
   if (front == nullptr) // If nothing in the list, throw error
   {
-    throw invalid_argument("NOTHING IN LIST");
+    return -1;
   }
   Node* temp = front;
   int i = 0;
@@ -172,25 +172,13 @@ int LinkedList::findReturnIndex(Item* _itemSearchingFor)
     i++;
     temp = temp->getNext();
   }
-  //cout << _valueSearchingFor;
-  throw invalid_argument(" IS NOT IN LIST"); // If it isn't in the list, return i won't happen, so throw an error
+  return -1;
 }
 
 void LinkedList::remove(Node* _nodeToRemove)
 {
-  if (front == nullptr) // If nothing in the list or node to search for doesn't exist, throw error
+  if (front == nullptr || _nodeToRemove == nullptr || !search(_nodeToRemove)) // If nothing in the list or node to search for doesn't exist, return
   {
-    //throw invalid_argument("NOTHING IN LIST TO REMOVE");
-    return;
-  }
-  if(_nodeToRemove == nullptr) // If node to search for doesn't exist, throw error
-  {
-    //throw invalid_argument("SENT NULLPTR");
-    return;
-  }
-  if(!search(_nodeToRemove))
-  {
-    //throw invalid_argument("NOT IN LIST");
     return;
   }
   if(_nodeToRemove != front && _nodeToRemove != back) // If it's in an inside location
@@ -301,7 +289,7 @@ void LinkedList::insertAfter(Node* _nodeSearchingFor, Node* _passedNode) // Inse
   }
 }
 
-Node* LinkedList::searchReturn(Item* _itemSearchingFor) // Return the first node that has the given value
+Node* LinkedList::searchReturn(Item* _itemSearchingFor) // Return the first node that has the given item
 {
   if (front == nullptr) // If nothing in the list, throw error
   {

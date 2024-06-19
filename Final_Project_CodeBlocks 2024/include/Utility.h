@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// Everything needs to know what window it's in, and it's handy for everything to be able to generate a random number.
+// Nothing else came up that would be handy to have in a utility class
 class Utility
 {
     public:
@@ -16,7 +18,6 @@ class Utility
 
     protected:
         WINDOW * curWin;
-        int difficulty;
 
 
     private:

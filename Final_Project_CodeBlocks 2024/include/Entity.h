@@ -14,6 +14,7 @@ class Entity : public Utility
         Entity(WINDOW* _curWin, Maze * _curMaze, Tile* _curTile, float _hp, string _name, float _strength, int _id, char _type, int _mazeChoice);
         virtual ~Entity();
 
+        // Good ol' getters and setters. Probably don't actually need all of these, but there's basically no overhead to have them and it's super annying when one is needed and not coded
         float getHP() { return hp; }
         void setHP(float val) { hp = val; }
         string getName() { return name; }
@@ -34,7 +35,6 @@ class Entity : public Utility
         void setMaxHP(float val){maxHP = val;}
 
     protected:
-        WINDOW* curWin;
         Maze * curMaze;
         Tile * curTile;
         float hp;

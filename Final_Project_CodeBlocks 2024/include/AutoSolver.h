@@ -8,7 +8,7 @@
 class AutoSolver : public Utility
 {
     public:
-        AutoSolver(WINDOW* _curWin, Maze* curMaze, int _posY, int _posX);
+        AutoSolver(WINDOW* _curWin, Maze* curMaze, int _posY, int _posX, int _mazeChoice);
         virtual ~AutoSolver();
         // Add the last moved direction first to the stack VERY IMPORTANT
         // Have a second stack with all the backtracking moves which also is the way out
@@ -34,16 +34,16 @@ class AutoSolver : public Utility
     protected:
 
     private:
-        WINDOW * _curWin;
         Maze* curMaze;
         Stack* stackMain;
         Stack* stackBacktrack;
-        Stack* stackExit;
+        Stack* stackExit; // A third stack to make the algorithm work. Is the list of moves from current pos to the exit
         char lastMove;
         int posX;
         int posY;
         bool hasKey;
         bool hasMetExit;
+        int mazeChoice;
 };
 
 #endif // AUTOSOLVER_H

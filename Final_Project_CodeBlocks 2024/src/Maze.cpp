@@ -65,11 +65,11 @@ Maze::Maze(WINDOW* _curWin, int _choice)
         }
         break;
     case 3:
-        mazeHeight = mazeWidth = 40;
-        endPosY = 2;
-        endPosX = 22;
-        startPosY = 25;
-        startPosX = 2;
+        mazeHeight = mazeWidth = 38;
+        endPosY = 1;
+        endPosX = 36;
+        startPosY = 35;
+        startPosX = 3;
         for(int i = 0; i < mazeHeight; i++)
         {
             for(int j = 0; j < mazeWidth; j++)
@@ -138,6 +138,17 @@ void Maze::display(int _whichMaze) // Display the maze, iterating through each s
             }
         }
         break;
+    case 3:
+        for(int i = 0; i < mazeHeight; i++)
+        {
+            for(int j = 0; j < mazeWidth; j++)
+            {
+                if(hardMaze3[i][j] != nullptr)
+                {
+                    hardMaze3[i][j]->display();
+                }
+            }
+        }
     }
     return;
 }
@@ -162,7 +173,7 @@ const char Maze::mazeTemplate1[20][20] = {
 {wll,spc,wll,spc,wll,spc,spc,spc,wll,spc,wll,spc,wll,spc,spc,spc,wll,spc,wll,wll},
 {wll,spc,spc,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll,wll,wll,spc,wll,spc,wll,wll},
 {wll,wll,wll,spc,wll,wll,wll,spc,spc,spc,wll,spc,spc,spc,spc,spc,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
+{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll}
 };
 
 const char Maze::mazeTemplate2[30][30] = {
@@ -192,51 +203,49 @@ const char Maze::mazeTemplate2[30][30] = {
 {wll,spc,wll,spc,wll,spc,wll,spc,spc,spc,spc,spc,wll,spc,spc,spc,wll,spc,spc,spc,wll,spc,spc,spc,spc,spc,spc,spc,wll,wll},
 {wll,spc,wll,spc,wll,spc,wll,spc,wll,wll,wll,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll,wll,ext,wll,spc,wll,wll},
 {wll,spc,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll},
-{wll,spc,wll,spc,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,spc,wll,spc,wll,wll},
+{wll,spc,wll,spc,wll,spc,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,spc,wll,spc,wll,wll},
 {wll,spc,spc,spc,spc,spc,wll,wll,wll,wll,wll,spc,spc,spc,spc,wll,spc,wll,wll,wll,wll,wll,wll,spc,spc,spc,wll,spc,wll,wll},
 {wll,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,wll,wll,spc,spc,spc,wll,spc,spc,spc,spc,spc,spc,wll,spc,spc,spc,spc,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
+{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll}
 };
 
-const char Maze::mazeTemplate3[40][40] = {
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,ext,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,beg,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
-{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
+const char Maze::mazeTemplate3[38][38] = {
+{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll},
+{wll,spc,spc,spc,spc,spc,spc,wll,wll,spc,spc,spc,spc,spc,spc,spc,wll,wll,spc,wll,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,wll,wll,wll,spc,spc,ext,wll},
+{wll,spc,wll,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,wll,wll,wll,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll},
+{wll,spc,spc,spc,spc,wll,spc,spc,spc,wll,wll,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll,wll,spc,spc,spc,spc,wll,wll,spc,wll,wll,wll,spc,spc,spc,wll,spc,wll},
+{wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll,wll,spc,wll,spc,spc,spc,spc,spc,wll,wll,spc,wll,spc,wll,spc,wll},
+{wll,spc,wll,spc,spc,spc,wll,wll,spc,spc,spc,wll,wll,spc,wll,spc,spc,spc,spc,spc,wll,spc,spc,spc,wll,wll,wll,wll,wll,spc,wll,spc,spc,wll,spc,wll,spc,wll},
+{wll,spc,spc,spc,wll,spc,spc,spc,spc,wll,spc,wll,wll,spc,wll,wll,spc,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,spc,wll,spc,wll,wll,spc,wll,spc,wll,spc,wll},
+{wll,wll,wll,wll,wll,wll,spc,wll,spc,wll,spc,spc,spc,spc,wll,wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,wll,spc,spc,wll,spc,spc,wll,spc,wll,wll,wll,spc,wll},
+{wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,wll,spc,wll,wll,wll,wll,spc,spc,spc,wll,wll,spc,spc,spc,spc,wll,spc,wll,wll,spc,wll,wll,spc,wll,wll,wll,spc,wll},
+{wll,spc,wll,wll,wll,spc,wll,wll,spc,wll,wll,spc,wll,wll,wll,spc,spc,wll,wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,spc,spc,wll,spc,spc,spc,spc,wll,spc,wll},
+{wll,spc,wll,spc,spc,spc,spc,wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,wll,wll,spc,wll,wll,spc,wll,wll,wll,spc,wll,wll,wll,wll,wll,spc,wll,wll,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,wll,spc,wll,wll,spc,wll,wll,spc,spc,spc,spc,wll,spc,wll,wll,spc,spc,spc,wll,wll,wll,wll,spc,wll,wll,spc,wll,spc,spc,spc,wll},
+{wll,spc,wll,wll,spc,spc,spc,spc,spc,wll,wll,spc,spc,wll,wll,wll,wll,spc,spc,spc,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,wll,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,wll,spc,wll,spc,wll,spc,wll,spc,spc,spc,wll,wll,spc,wll,spc,wll,wll,wll,wll,wll,wll,spc,wll,wll,wll,wll,wll,wll,wll,spc,wll},
+{wll,spc,wll,spc,spc,spc,spc,wll,spc,spc,spc,spc,spc,wll,spc,wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,wll,spc,wll,wll,wll,wll,spc,wll},
+{wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,wll,wll,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll},
+{wll,spc,spc,wll,spc,spc,spc,wll,spc,wll,wll,wll,wll,wll,spc,wll,spc,spc,spc,spc,wll,wll,spc,wll,spc,wll,spc,wll,wll,spc,wll,wll,wll,spc,wll,wll,spc,wll},
+{wll,wll,spc,spc,spc,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll,wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,wll,spc,wll,spc,spc,spc,wll,wll,spc,wll},
+{wll,wll,spc,wll,spc,spc,spc,spc,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll,wll,wll,spc,wll,wll,spc,wll},
+{wll,spc,spc,wll,spc,wll,spc,wll,wll,spc,wll,spc,wll,wll,wll,wll,spc,spc,wll,spc,wll,spc,wll,wll,spc,spc,spc,spc,wll,spc,wll,wll,spc,spc,spc,wll,spc,wll},
+{wll,spc,wll,spc,wll,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,wll,spc,wll,spc,wll,wll,spc,wll,spc,wll,wll,spc,spc,spc,wll,wll,wll,wll,spc,wll},
+{wll,spc,spc,wll,spc,wll,wll,wll,wll,wll,spc,wll,wll,wll,wll,wll,spc,wll,wll,spc,spc,spc,wll,wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,wll,spc,wll},
+{wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,spc,spc,wll,spc,spc,spc,wll,wll,wll,spc,wll,wll,wll,wll,spc,spc,spc,spc,spc,spc,wll,spc,wll,spc,wll,spc,spc,wll},
+{wll,spc,spc,spc,spc,spc,spc,wll,wll,spc,wll,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll,spc,spc,spc,wll,wll,wll,wll,wll,wll,spc,wll,spc,wll,wll,spc,wll},
+{wll,wll,spc,wll,wll,wll,spc,spc,spc,spc,wll,spc,spc,spc,wll,spc,spc,wll,wll,spc,wll,wll,spc,wll,wll,wll,wll,wll,spc,spc,wll,spc,spc,spc,spc,wll,spc,wll},
+{wll,wll,spc,wll,wll,wll,spc,wll,wll,spc,spc,wll,spc,wll,wll,wll,spc,spc,spc,spc,wll,wll,spc,wll,spc,spc,spc,wll,spc,wll,wll,wll,wll,wll,wll,wll,spc,wll},
+{wll,spc,spc,spc,wll,wll,wll,spc,wll,spc,wll,spc,spc,wll,spc,spc,wll,wll,wll,spc,wll,spc,spc,wll,spc,wll,wll,wll,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll},
+{wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll,spc,wll,wll,spc,spc,spc,wll,wll,wll,spc,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll},
+{wll,spc,spc,spc,wll,spc,wll,wll,wll,spc,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll,spc,spc,spc,wll,wll,wll,spc,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,wll,wll,spc,spc,spc,spc,wll,spc,spc,spc,spc,spc,wll,wll,spc,wll,spc,wll,wll,wll,spc,wll,wll,wll,spc,wll,spc,spc,wll,spc,wll},
+{wll,spc,spc,spc,wll,spc,wll,spc,wll,spc,wll,wll,wll,wll,spc,wll,wll,wll,wll,spc,spc,spc,wll,spc,wll,spc,spc,spc,wll,spc,spc,spc,wll,spc,wll,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,spc,wll,spc,wll,wll,wll,spc,spc,wll,spc,wll,wll,spc,wll,wll,wll,spc,wll,wll,spc,wll,wll,spc,wll,spc,spc,spc,spc,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,wll,spc,spc,spc,spc,spc,wll,spc,spc,spc,wll,wll,spc,wll,spc,spc,spc,spc,wll,wll,spc,wll,spc,wll},
+{wll,spc,wll,spc,spc,spc,wll,wll,wll,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,wll,wll,spc,wll,wll,wll,wll,spc,wll,spc,wll,wll,wll,wll,wll,spc,wll,spc,wll},
+{wll,spc,wll,spc,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,wll,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll,spc,wll},
+{wll,spc,spc,beg,spc,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,spc,wll},
+{wll,wll,wll,spc,wll,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,spc,wll},
+{wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll,wll}
 };

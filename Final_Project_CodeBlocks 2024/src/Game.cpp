@@ -10,7 +10,7 @@ Game::Game()
     inventoryWin = nullptr;
     combatWin = nullptr;
     consoleWin = nullptr;
-    for(int i = 0; i < numMonsters; i++)
+    for(int i = 0; i < numMonsters; i++) // Set all the monsters to nullptr to start
     {
         monsters[i] = nullptr;
     }
@@ -36,6 +36,7 @@ Game::~Game()
 // Setup all windows, generate maze, and initialize everything else
 void Game::initializeGame()
 {
+    // this is all curses stuff, so just trust that it's how one does it
     attron(A_BOLD);
     printw("    NOTE: WASD is for move; arrow keys are for navigating menus");
     attroff(A_BOLD);
@@ -74,29 +75,28 @@ void Game::initializeGame()
     wrefresh(consoleWin);
     //---------------------------------------------------------||
 
-    // Setup maze
+    // Setup maze, makes a new maze based on what was selected at the beginning
     maze = new Maze(mazeWin, mazeChoice);
-
 
     if(!autoSolverFlag) // If not auto solving
     {
-        inventory = new LinkedList();
-        switch(mazeChoice)
+        inventory = new LinkedList(); // Make an inventory for the player, and the game has access to it to to make calls simpler
+        switch(mazeChoice) // Create the player
         {
         case 1:
-            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze1[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze1[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 1500.0, 1, 'P', mazeChoice, inventory);
             break;
         case 2:
-            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze2[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze2[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 1500.0, 1, 'P', mazeChoice, inventory);
             break;
         case 3:
-            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze3[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 10.0, 1, 'P', mazeChoice, inventory);
+            player = new Player(mazeWin, consoleWin, maze, maze->hardMaze3[maze->getStartPosY()][maze->getStartPosX()], 100.0, "Jeff", 1500.0, 1, 'P', mazeChoice, inventory);
             break;
         default:
             break;
         }
         // setup monsters;
-        switch(mazeChoice)
+        switch(mazeChoice) // Create the monsters. Did not get to properly positioning or creating them in maze 3, but it's not like that really matters anyways
         {
         case 1:
             monsters[0] = new Monster(mazeWin, maze, maze->hardMaze1[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
@@ -106,16 +106,18 @@ void Game::initializeGame()
             monsters[4] = new Monster(mazeWin, maze, maze->hardMaze1[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
             break;
         case 2:
-            monsters[0] = new Monster(mazeWin, maze, maze->hardMaze2[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
-            monsters[1] = new Monster(mazeWin, maze, maze->hardMaze2[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
-            monsters[2] = new Monster(mazeWin, maze, maze->hardMaze2[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
-            monsters[3] = new Monster(mazeWin, maze, maze->hardMaze2[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
-            monsters[4] = new Monster(mazeWin, maze, maze->hardMaze2[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
-            monsters[5] = new Monster(mazeWin, maze, maze->hardMaze2[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
-            monsters[6] = new Monster(mazeWin, maze, maze->hardMaze2[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
-            monsters[7] = new Monster(mazeWin, maze, maze->hardMaze2[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
-            monsters[8] = new Monster(mazeWin, maze, maze->hardMaze2[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
-            monsters[9] = new Monster(mazeWin, maze, maze->hardMaze2[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            monsters[0] = new Monster(mazeWin, maze, maze->hardMaze2[6][3], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
+            monsters[1] = new Monster(mazeWin, maze, maze->hardMaze2[14][4], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
+            monsters[2] = new Monster(mazeWin, maze, maze->hardMaze2[22][15], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
+            monsters[3] = new Monster(mazeWin, maze, maze->hardMaze2[7][24], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
+            monsters[4] = new Monster(mazeWin, maze, maze->hardMaze2[11][9], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+
+            monsters[5] = new Monster(mazeWin, maze, maze->hardMaze2[25][3], 80.0, "Vampire", 17.50, 2, 'V', mazeChoice);
+            monsters[6] = new Monster(mazeWin, maze, maze->hardMaze2[26][23], 175.0, "Werewolf", 13.0, 3, 'W', mazeChoice);
+            monsters[7] = new Monster(mazeWin, maze, maze->hardMaze2[13][13], 1.0, "Mosquito", float(INT_MAX), 4, 'M', mazeChoice);
+            monsters[8] = new Monster(mazeWin, maze, maze->hardMaze2[3][14], 50.0, "Spider", 20.0, 5, 'S', mazeChoice);
+            monsters[9] = new Monster(mazeWin, maze, maze->hardMaze2[15][27], 65.0, "Goblin", 10.0, 6,'G', mazeChoice);
+
             break;
         case 3:
             monsters[0] = new Monster(mazeWin, maze, maze->hardMaze3[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
@@ -123,6 +125,7 @@ void Game::initializeGame()
             monsters[2] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
             monsters[3] = new Monster(mazeWin, maze, maze->hardMaze3[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
             monsters[4] = new Monster(mazeWin, maze, maze->hardMaze3[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            /*
             monsters[5] = new Monster(mazeWin, maze, maze->hardMaze3[10][18], 100.0, "Zombie", 20.0, 2, 'Z', mazeChoice);
             monsters[6] = new Monster(mazeWin, maze, maze->hardMaze3[4][5], 75.0, "Skeleton", 12.0, 3, 'S', mazeChoice);
             monsters[7] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
@@ -133,13 +136,14 @@ void Game::initializeGame()
             monsters[12] = new Monster(mazeWin, maze, maze->hardMaze3[6][9], 2.0, "Bat", 7000.0, 4, 'B', mazeChoice);
             monsters[13] = new Monster(mazeWin, maze, maze->hardMaze3[13][3], 250.0, "Golem", 6.0, 5, 'G', mazeChoice);
             monsters[14] = new Monster(mazeWin, maze, maze->hardMaze3[11][8], 150.0, "Ogre", 15, 6,'O', mazeChoice);
+            */
             break;
         default:
             break;
         }
         // Setup monsters
 
-        // Display windows initially
+        // Display windows initially, and gives some info to the player via the console
         displayMaze();
         displayInventory();
         displayCombat();
@@ -151,17 +155,17 @@ void Game::initializeGame()
 
     else
     {
-        autoSolver = new AutoSolver(mazeWin, maze, maze->getStartPosY(), maze->getStartPosX());
+        autoSolver = new AutoSolver(mazeWin, maze, maze->getStartPosY(), maze->getStartPosX(), mazeChoice);
         switch(mazeChoice)
         {
         case 1:
             maze->hardMaze1[16][3]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
             break;
         case 2:
-            maze->hardMaze2[5][6]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
+            maze->hardMaze2[15][9]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
             break;
         case 3:
-            maze->hardMaze3[16][3]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
+            maze->hardMaze3[18][26]->setItem(new Consumable(mazeWin, "Key", 'K', 1, true));
             break;
         }
         maze->display(mazeChoice);
@@ -177,22 +181,6 @@ void Game::initializeGame()
 }
 
 
-
-
-/*
-switch(mazeChoice)
-{
-case 1:
-    hardMaze1
-    break;
-case 2:
-    hardMaze2
-    break;
-case 3:
-    hardMaze4
-    break;
-}
-*/
 
 
 
@@ -242,7 +230,7 @@ void Game::runGame()
             printToConsole("You lost. Try again!");
         }
     }
-    if(autoSolverFlag)
+    else if(autoSolverFlag)
     {
         while(!didWinAutoSolver())
         {
@@ -334,7 +322,6 @@ void Game::checkCombat()
 
 void Game::displayMaze()
 {
-    highlightMaze();
     maze->display(mazeChoice); // displays the hardcoded maze
     displayMonsters(); // displays all the monsters
     player->display();
@@ -342,7 +329,7 @@ void Game::displayMaze()
     //maze->display(true); // displays the hardcoded maze
 
 
-    //mvwprintw(consoleWin, 8,1,"Player position: (%i, %i)",player->getPosY(), player->getPosX()); // For debugging and enemy positioning purposes, displays what the current player position relative to the maze is
+    mvwprintw(consoleWin, 8,1,"Player position: (%i, %i)",player->getPosY(), player->getPosX()); // For debugging and enemy positioning purposes, displays what the current player position relative to the maze is
 
     wrefresh(mazeWin);
     return;
@@ -601,6 +588,7 @@ void Game::handleInput(int _input)
             selectedWin = 0;
             resetWins();
             displayMaze();
+            highlightMaze();
         }
         else
         {
@@ -737,6 +725,7 @@ void Game::moveMonsters()
     return;
 }
 
+// Resets all the highlights on the various windows to default
 void Game::resetWins()
 {
     mvwchgat(mazeWin, 0, 2, 11, A_NORMAL, 0, NULL);
@@ -748,6 +737,7 @@ void Game::resetWins()
     return;
 }
 
+// Pretty self explanatory, except that it scrolls down. That's just how curses works
 void Game::printToConsole(string _input)
 {
     wmove(consoleWin, 1,1);
@@ -769,6 +759,7 @@ bool Game::didWin()
     return false;
 }
 
+// Checks to see if the autosolver has one yet
 bool Game::didWinAutoSolver()
 {
     if(autoSolver->getPosX() == maze->getEndPosX() && autoSolver->getPosY() == maze->getEndPosY() && autoSolver->getHasKey())
@@ -780,6 +771,7 @@ bool Game::didWinAutoSolver()
 
 
 // Basically IS the combat system
+// Handles what happens when the player attacks, and what happens when the monster dies
 void Game::handleCombat(int _input)
 {
     displayCombat();
@@ -803,10 +795,11 @@ void Game::handleCombat(int _input)
         int mY = monsterInCombat->getPosY();
         isInCombat = false;
         //delete monsterInCombat;
-        for(int i = 0; i < numMonsters; i++)
+        for(int i = 0; i < numMonsters; i++) // Sets the monster that died to nullptr so that the game doesn't try to move it later
         {
             if(monsters[i] == monsterInCombat)
             {
+                delete monsters[i];
                 monsters[i] = nullptr;
             }
         }
@@ -829,10 +822,15 @@ void Game::handleCombat(int _input)
         default:
             break;
         }
-        player->setHP(player->getHP()+player->getMaxHP()/2); // Reset player health t
-        wclear(combatWin);
-        box(combatWin,0,0);
-        highlightCombat();
+        player->setHP(player->getHP()+player->getMaxHP()/2); // Add half the player's health back after a victory
+        if(player->getHP() > player->getMaxHP()) // Caps players health at max health
+        {
+            player->setHP(player->getMaxHP());
+        }
+
+        // resets everything back to how it was before the combat started
+        wclear(combatWin); // clears the combat window
+        box(combatWin,0,0); // resets combat window border
         resetWins();
         highlightMaze();
         displayCombat();
@@ -842,6 +840,7 @@ void Game::handleCombat(int _input)
     return;
 }
 
+// The player attacks the monster
 void Game::playerAttack()
 {
     monsterInCombat->setHP(monsterInCombat->getHP()-player->getStrength());
@@ -851,6 +850,8 @@ void Game::playerAttack()
     }
     return;
 }
+
+// The monster attacks the player
 void Game::monsterAttack()
 {
     player->setHP(player->getHP()-monsterInCombat->getStrength());
@@ -864,9 +865,9 @@ void Game::monsterAttack()
 // Handles navigating through the inventory to select something
 void Game::handleInventory()
 {
-    selectedItem = inventory->getFront()->getContent();
+    selectedItem = inventory->getFront()->getContent(); // Sets the seleceted item to the first item in the inventory
     int input;
-    displayInventory();
+    displayInventory(); // Displays that
     do
     {
         input = wgetch(inventoryWin);
@@ -883,7 +884,7 @@ void Game::handleInventory()
             }
             break;
         case KEY_DOWN:
-            if(inventory->findReturnIndex(selectedItem) == inventory->count())// if top item selected and key up pressed, select bottom item
+            if(inventory->findReturnIndex(selectedItem) == inventory->count()-1)// if top item selected and key up pressed, select bottom item
             {
                 selectedItem = inventory->getFront()->getContent();
             }
@@ -892,9 +893,16 @@ void Game::handleInventory()
                 selectedItem = inventory->findItem(selectedItem)->getNext()->getContent();
             }
             break;
-        case 10:
+        case 10: // 10 is the int value of 'Enter'
+            if(selectedItem->getType() == 'K')
+            {
+                selectedItem = nullptr;
+                displayInventory();
+                return;
+            }
             if(selectedItem->getType() == 'W') // If selecting a weapon, equip that weapon
             {
+                // This code manages the player's strength, resetting it and then changing it based on what weapon is being equipped
                 if(player->getEquippedItem() != nullptr)
                 {
                     if(player->getEquippedItem()->getMultiply())
@@ -919,8 +927,9 @@ void Game::handleInventory()
                     }
                 }
             }
-            else
+            else // else it was a consumable, and not a key
             {
+                // This code manages the player's healthing, resetting it and then changing it based on what was consumed
                 if(selectedItem->getMultiply())
                 {
                     player->setHP(player->getHP()*selectedItem->use());
@@ -929,11 +938,19 @@ void Game::handleInventory()
                 {
                     player->setHP(player->getHP()+selectedItem->use());
                 }
+                if(player->getHP() > player->getMaxHP())
+                {
+                    player->setHP(player->getMaxHP());
+                }
                 mvwprintw(inventoryWin, inventory->findReturnIndex(selectedItem)+1, 1, "                                                              ");
                 inventory->removeItem(selectedItem);
             }
             selectedItem = nullptr;
             break;
+        case 27:
+            selectedItem = nullptr;
+            displayInventory();
+            return;
         default:
             break;
         }
@@ -941,7 +958,6 @@ void Game::handleInventory()
     }while(input != 27 && input != 10); // Continues looping until the player presses esc or enter
     return;
 }
-
 void Game::highlightMaze()
 {
     mvwchgat(mazeWin, 0, 2, 11, A_STANDOUT, 0, NULL); // Highlights the maze title
@@ -962,6 +978,7 @@ void Game::highlightCombat()
     return;
 }
 
+// Generates a pointer to an item which is actually either a weapon or a consumable
 Item* Game::generateItem()
 {
     // NOTE: There will be 1 less case than the amount of items, because monsters should not *randomly* drop the key. The last one is always the one to drop the key.
@@ -974,11 +991,12 @@ Item* Game::generateItem()
             counter++;
         }
     }
-    if(counter == 0)
+    if(counter == 0) // If there is no more monster (since this code runs after the monster has been deleted, this means that the last monster was killed)
     {
-        temp = new Consumable(inventoryWin, "Key", 'K', 1, true);
+        temp = new Consumable(inventoryWin, "Key", 'K', 1, true);// drop a key
         return temp;
     }
+    // else drop a random other item
     switch(Utility::randomNumberInt(numItemTypes-1))
     {
     case 0:
@@ -1012,6 +1030,7 @@ Item* Game::generateItem()
     return temp;
 }
 
+// Displays an autosolver stack for debugging purposes. Doesn't work for super long stuff, because the text does not wrap.
 void Game::displayStack(Stack* _stack, int _line)
 {
     int counter = 1;

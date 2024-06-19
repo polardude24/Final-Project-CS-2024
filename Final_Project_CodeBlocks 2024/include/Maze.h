@@ -12,7 +12,7 @@ class Maze : public Utility
         virtual ~Maze();
         static const char mazeTemplate1[20][20];
         static const char mazeTemplate2[30][30];
-        static const char mazeTemplate3[40][40];
+        static const char mazeTemplate3[38][38];
         int getMazeHeight() { return mazeHeight; }
         void setMazeHeight(int val) { mazeHeight = val; }
         int getMazeWidth() { return mazeWidth; }
@@ -29,12 +29,11 @@ class Maze : public Utility
         // these HAVE to be public, because I have no clue how to return this in a get function
         Tile* hardMaze1[20][20];
         Tile* hardMaze2[30][30];
-        Tile* hardMaze3[30][30];
+        Tile* hardMaze3[38][38];
 
     protected:
 
     private:
-        WINDOW * curWin;
         int mazeHeight;
         int mazeWidth;
         int endPosX;

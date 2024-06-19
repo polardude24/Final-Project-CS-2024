@@ -19,7 +19,6 @@ class Item : public Utility
         //virtual void makeThisClassAbstractWeeeee() = 0;
 
     protected:
-        WINDOW * curWin;
         char type;
         string name;
         string info;

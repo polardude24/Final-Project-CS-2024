@@ -29,7 +29,6 @@ class Tile : public Utility
         void display();
 
     protected:
-        WINDOW * curWin;
         Item* item;
         chtype color;
         int posX;

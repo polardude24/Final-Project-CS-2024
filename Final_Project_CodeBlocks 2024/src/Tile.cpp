@@ -23,6 +23,7 @@ Tile::Tile(WINDOW* _curWin, int _posY, int _posX, char _type, bool _isTraversabl
 
 void Tile::display() // Displays a tile in its window
 {
+    // Curses stuff, wattron and wattroff is the way to make and disable colors
     if(item != nullptr)
     {
         wattron(curWin, COLOR_PAIR(3));
