@@ -40,12 +40,10 @@
 		</Compiler>
 		<Unit filename="include/AutoSolver.h" />
 		<Unit filename="include/Consumable.h" />
-		<Unit filename="include/ContainerQ.h" />
 		<Unit filename="include/ContainerStack.h" />
 		<Unit filename="include/Entity.h" />
 		<Unit filename="include/Game.h" />
 		<Unit filename="include/Item.h" />
-		<Unit filename="include/Key.h" />
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/Maze.h" />
 		<Unit filename="include/Menu.h" />
@@ -53,7 +51,6 @@
 		<Unit filename="include/Monster.h" />
 		<Unit filename="include/Node.h" />
 		<Unit filename="include/Player.h" />
-		<Unit filename="include/Queue.h" />
 		<Unit filename="include/Stack.h" />
 		<Unit filename="include/Tile.h" />
 		<Unit filename="include/Utility.h" />
@@ -61,7 +58,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/AutoSolver.cpp" />
 		<Unit filename="src/Consumable.cpp" />
-		<Unit filename="src/ContainerQ.cpp" />
 		<Unit filename="src/ContainerStack.cpp" />
 		<Unit filename="src/Entity.cpp" />
 		<Unit filename="src/Game.cpp" />
@@ -73,7 +69,6 @@
 		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Node.cpp" />
 		<Unit filename="src/Player.cpp" />
-		<Unit filename="src/Queue.cpp" />
 		<Unit filename="src/Stack.cpp" />
 		<Unit filename="src/Tile.cpp" />
 		<Unit filename="src/Utility.cpp" />
